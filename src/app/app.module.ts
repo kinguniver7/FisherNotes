@@ -17,6 +17,8 @@ import { BackpackComponent } from './components/backpack/backpack.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SpinFishingComponent } from './components/spin-fishing/spin-fishing.component';
+import { StoreroomComponent } from './components/storeroom/storeroom.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     DashboardComponent,
     BackpackComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    SpinFishingComponent,
+    StoreroomComponent
   ],
   imports: [
     BrowserModule,

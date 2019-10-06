@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +10,14 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'FisherNotes';
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 
-  constructor(private translate: TranslateService) {
+
+  constructor(private translate: TranslateService, private breakpointObserver: BreakpointObserver) {
     translate.addLangs(['en', 'ru', 'uk']);
     translate.setDefaultLang('en');
     const currentLanguage = translate.getBrowserLang();

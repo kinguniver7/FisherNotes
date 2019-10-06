@@ -1,5 +1,14 @@
 {
     "GENERAL": {
+        "HOME":"Home"
+        
+
+    },
+    "SPIN_FISHING":{
+        "MENU_ITEM":"Spin fishing"
+    },
+    "STOREROOM":{
+        "MENU_ITEM":"Storeroom"
 
     },
     "DASHBOARD": {
@@ -8,4 +17,5 @@
     "SIGNIN": {
 
     }
+    
 }
