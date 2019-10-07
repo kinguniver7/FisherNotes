@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpiningService } from 'src/app/services/spining.service';
 
 @Component({
   selector: 'app-storeroom',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreroomComponent implements OnInit {
 
-  constructor() { }
+  allThinks: any;
+  constructor(private spiningService: SpiningService) { }
 
   ngOnInit() {
+    this.spiningService.getAllRods().subscribe(data => {
+      debugger;
+    });
   }
 
 }

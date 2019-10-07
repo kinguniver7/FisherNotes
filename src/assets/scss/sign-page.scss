@@ -1,11 +1,4 @@
 
-
-
-.positronx {
-  text-decoration: none;
-  color: #ffffff;
-}
-
 .box {
   position: relative;
   top: 0;
@@ -19,7 +12,7 @@
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   z-index: 5;
-  max-width: 330px;
+  max-width: 250px;
 }
 
 .box.back {
@@ -49,9 +42,9 @@
 .login {
     height: 100%;
   }
-  .login .example-form {
+  .login .login-form {
     min-width: 100%;
-    max-width: 300px;
+    max-width: 250px;
     width: 100%;
   }
   

@@ -3,15 +3,38 @@
   }
   
   .sidenav {
-    width: 200px;
+    width: 250px;
   }
   
   .sidenav .mat-toolbar {
-    background: inherit;
+    //background: inherit;
   }
-  
   .mat-toolbar.mat-primary {
     position: sticky;
     top: 0;
     z-index: 1;
+  }
+  .sidenav__toolbar{
+    font-size: 12;
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+  .sidenav-user-info__image-avatar{
+    background-image: url('../assets/img/btn_google.png');
+    background-size: cover;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+    margin-right: 2px;
+    border: 1px solid white;
+  }
+  .sidenav-user-info__name{
+    font-size:20px;
+    font-weight:500;
+  }
+  .sidenav-user-info__email{
+    color:rgba(0,0,0,.54);
+    font-size:14px;
   }

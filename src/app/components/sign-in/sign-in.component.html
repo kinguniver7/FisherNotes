@@ -2,11 +2,11 @@
     <mat-card class="box mat-card">
       <mat-card-header class="mat-card-header">
           <div class="mat-card-header-text">
-              <mat-card-title class="mat-card-title">Log in</mat-card-title>              
+              <mat-card-title class="mat-card-title">Sign in</mat-card-title>              
         </div>        
       </mat-card-header>
   
-      <form class="example-form">
+      <form class="login-form" *ngIf='false'>
         <mat-card-content class="mat-card-content">
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Username">
@@ -17,7 +17,19 @@
           </mat-form-field>
         </mat-card-content>
         <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+
+        
+
+
       </form>
+      <div fxLayout="row" fxLayoutAlign="center center">
+          <div class="custom-g-sign-in" (click)='login()' >
+              <span class="icon"></span>
+              <span class="buttonText">Google</span>
+          </div>
+      </div>
+      
+
     </mat-card>
   
   </div>

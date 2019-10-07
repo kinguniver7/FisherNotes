@@ -6,20 +6,82 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$app-color-primary: mat-palette($mat-lime, 900);
-$app-color-light:  mat-palette($mat-lime, #b4a647);
-$app-color-dark:    mat-palette($mat-lime, #524c00);
+// define a real custom palette (using http://mcg.mbitson.com)
+$fox-primary: (
+  50 : #e7e8e4,
+  100 : #c3c6bc,
+  200 : #9ba190,
+  300 : #737b63,
+  400 : #555e41,
+  500 : #374220,
+  600 : #313c1c,
+  700 : #2a3318,
+  800 : #232b13,
+  900 : #161d0b,
+  A100 : #b5ff5e,
+  A200 : #9dff2b,
+  A400 : #85f700,
+  A700 : #77de00,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #ffffff,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+    )
+);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$candy-app-theme: mat-light-theme($app-color-primary, $app-color-light, $app-color-dark);
+$fox-accent: (
+  50 : #ecede9,
+  100 : #d0d3c8,
+  200 : #b1b6a4,
+  300 : #91997f,
+  400 : #7a8363,
+  500 : #626d48,
+  600 : #5a6541,
+  700 : #505a38,
+  800 : #465030,
+  900 : #343e21,
+  A100 : #d5ff85,
+  A200 : #c3ff52,
+  A400 : #b1ff1f,
+  A700 : #a8ff05,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+    )
+);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($candy-app-theme);
+// mandatory stuff for theming
+$fox-palette-primary: mat-palette($fox-primary);
+$fox-palette-accent:  mat-palette($fox-accent);
+
+// include the custom theme components into a theme object
+$fox-theme: mat-light-theme($fox-palette-primary, $fox-palette-accent);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($fox-theme);
 
 html,
 body {
