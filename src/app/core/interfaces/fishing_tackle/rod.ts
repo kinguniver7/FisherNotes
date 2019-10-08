@@ -1,4 +1,5 @@
 import { Thing } from './thing';
+import { CatchingType } from '../catching-type';
 
 /**
  * Удилище
@@ -13,7 +14,7 @@ export interface Rod extends Thing {
     // строй
     formationType: RodFormationType;
     // вид рыбалки
-    applicationType: RodApplicationType;
+    catchingType: CatchingType;
 }
 /**
  * Строй удилища
@@ -35,9 +36,3 @@ export enum RodFormationType {
 
 }
 
-/**
- * Применение. Вид рыбалки
- */
-export enum RodApplicationType {
-    spining
-}

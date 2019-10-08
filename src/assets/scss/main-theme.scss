@@ -83,12 +83,6 @@ $fox-theme: mat-light-theme($fox-palette-primary, $fox-palette-accent);
 // include the custom theme object into the angular material theme
 @include angular-material-theme($fox-theme);
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 .app-header {
   justify-content: space-between;
@@ -98,4 +92,32 @@ body {
   right: 0;
   z-index: 2;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+.btn-fa-icon_r{
+  margin-right:5px;
+}
+.btn-fa-icon_l{
+  margin-left:5px;
+}
+.container{
+  display: flex;
+  justify-content: space-around;
+  flex: 0 0 230px;
+}
+
+//CONTENT
+.content{
+  margin: 10px;
+}
+
+//FILTERS
+.filter-content{
+  border-top: solid 1px rgba(0, 0, 0, 0.12);
+  padding-top: 10px;
+}
+
+//ICONS
+.fa-trash {
+  color: mat-color($mat-red, 700);
 }

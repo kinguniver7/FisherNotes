@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Rod, RodApplicationType } from '../core/interfaces/fishing_tackle/rod';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';

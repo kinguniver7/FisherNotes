@@ -1,14 +1,29 @@
 {
     "GENERAL": {
-        "HOME":"Home"
-        
-
+        "HOME":"Home",
+        "FILTER":{
+            "TITLE":"Filter"
+        },
+        "TOTAL_PRICE":"Total price:"
     },
     "SPIN_FISHING":{
         "MENU_ITEM":"Spin fishing"
     },
     "STOREROOM":{
-        "MENU_ITEM":"Storeroom"
+        "MENU_ITEM":"Storeroom",
+        "FILTERS":{
+            "GROUP":"Group",
+            "CATCHINGTYPE":"Catching Type"
+        },
+        "RODS":{
+            "TITLE":"Rods"
+        },
+        "REELS":{
+            "TITLE":"Reels"            
+        },
+        "WOBBLERS":{
+            "TITLE":"Wobblers"            
+        }
 
     },
     "DASHBOARD": {

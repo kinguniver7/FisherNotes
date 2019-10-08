@@ -1,1 +1,79 @@
-<p>storeroom works!</p>
+<div class="content">
+    <!--FILTERS-->
+    <mat-accordion>
+        <mat-expansion-panel [expanded]='true' (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{'GENERAL.FILTER.TITLE'|translate}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    selected: group
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="filter-content">
+                <div fxLayout="row">
+                    <!--Group filter-->
+                    <div fxLayout="column">
+                        <div fxLayout = "row">
+                            <mat-form-field>
+                                <mat-label>{{'STOREROOM.FILTERS.GROUP'|translate}}</mat-label>
+                                <mat-select [(value)]="fltGroupsSelected">
+                                    <mat-option *ngFor="let group of fltGroups" [value]="group.value">
+                                    {{group.text}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!--CONTENT-->
+    <mat-card class="storeroom-card-items">
+        <mat-card-header>
+            <mat-card-title>{{'STOREROOM.RODS.TITLE'|translate}}</mat-card-title>
+            <mat-card-subtitle>{{'GENERAL.TOTAL_PRICE'|translate}}12000$</mat-card-subtitle>
+        </mat-card-header>
+        <div class="container">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+            </div>            
+        </div>
+    </mat-card>
+
+    <mat-card class="storeroom-card-items">
+            <mat-card-header>
+                    <mat-card-title>{{'STOREROOM.REELS.TITLE'|translate}}</mat-card-title>
+                    <mat-card-subtitle>{{'GENERAL.TOTAL_PRICE'|translate}}5000$</mat-card-subtitle>
+                </mat-card-header>
+        <div class="container">
+            <div fxLayout="row" fxLayoutAlign="center center" class="storeroom-items">
+                    <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+                    <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+                    <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+                    <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+                    <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+                    <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+            </div>
+        </div>
+    </mat-card>
+
+    <mat-card class="storeroom-card-items">
+            <mat-card-header>
+                <mat-card-title>{{'STOREROOM.WOBBLERS.TITLE'|translate}}</mat-card-title>
+                <mat-card-subtitle>{{'GENERAL.TOTAL_PRICE'|translate}}12000$</mat-card-subtitle>
+            </mat-card-header>
+            <div class="container">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+                </div>            
+            </div>
+        </mat-card>
+   
+    
+</div>
+

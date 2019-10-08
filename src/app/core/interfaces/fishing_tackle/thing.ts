@@ -1,4 +1,5 @@
 import { AppImage } from '../app-image';
+import { ThingType } from '../../enums/thing-type';
 /**
  * Вещь
  */
@@ -10,4 +11,6 @@ export interface Thing {
     price: number;
     // вес
     weightG: number;
+    type: ThingType;
 }
+

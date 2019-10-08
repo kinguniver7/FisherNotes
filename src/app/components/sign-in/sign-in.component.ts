@@ -17,7 +17,7 @@ export class SignInComponent implements OnInit {
   }
 
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(data => {
+    this.afAuth.auth.signInWithRedirect(new auth.GoogleAuthProvider()).then(data => {
       this.router.navigate(['home']);
     });
   }

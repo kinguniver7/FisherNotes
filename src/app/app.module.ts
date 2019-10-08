@@ -26,6 +26,12 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SpinFishingComponent } from './components/spin-fishing/spin-fishing.component';
 import { StoreroomComponent } from './components/storeroom/storeroom.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { FaModule } from './shared/fa.module';
+import { StoreroomItemComponent } from './components/storeroom/storeroom-item/storeroom-item.component';
+
+import { RodDetailDialogComponent } from './components/storeroom/detail/rod-detail-dialog/rod-detail-dialog.component';
+import { ReelDetailDialogComponent } from './components/storeroom/detail/reel-detail-dialog/reel-detail-dialog.component';
+import { WobblerDetailDialogComponent } from './components/storeroom/detail/wobbler-detail-dialog/wobbler-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,11 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
     SignInComponent,
     SignUpComponent,
     SpinFishingComponent,
-    StoreroomComponent
+    StoreroomComponent,
+    StoreroomItemComponent,
+    RodDetailDialogComponent,
+    ReelDetailDialogComponent,
+    WobblerDetailDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +68,13 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
     }),
     BrowserAnimationsModule,
     AngularMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FaModule
+  ],
+  entryComponents: [
+    RodDetailDialogComponent,
+    ReelDetailDialogComponent,
+    WobblerDetailDialogComponent
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent],
