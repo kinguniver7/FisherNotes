@@ -111,6 +111,19 @@ $fox-theme: mat-light-theme($fox-palette-primary, $fox-palette-accent);
   margin: 10px;
 }
 
+.form-add{
+  display: flex;
+  flex-direction: column;
+}
+.form-add > * {
+  width: 100%;
+}
+.mat-card-content-form{
+  flex-wrap:wrap;
+  max-width: 1130px;
+}
+
+
 //FILTERS
 .filter-content{
   border-top: solid 1px rgba(0, 0, 0, 0.12);
@@ -120,4 +133,11 @@ $fox-theme: mat-light-theme($fox-palette-primary, $fox-palette-accent);
 //ICONS
 .fa-trash {
   color: mat-color($mat-red, 700);
+}
+
+//BUTTONS
+.mat-button-add{
+  max-height: 36px;
+  color: mat-contrast($fox-primary, 400); 
+  background-color: mat-color($fox-primary, 400);
 }

@@ -15,6 +15,8 @@ import {
   faSignOutAlt,
   faStickyNote,
   faExternalLinkAlt,
+  faCheck,
+  faLink,
 
   fas,
  } from '@fortawesome/free-solid-svg-icons';
@@ -45,6 +47,8 @@ export class FaModule {
     faInfoCircle,
     faSignOutAlt,
     faStickyNote,
-    faExternalLinkAlt);
+    faExternalLinkAlt,
+    faCheck,
+    faLink);
   }
 }

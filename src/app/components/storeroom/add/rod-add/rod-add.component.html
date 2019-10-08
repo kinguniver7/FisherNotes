@@ -1,0 +1,65 @@
+<div class="content">
+    <mat-card class="container mat-card-form">
+        <mat-card-header>
+                <mat-card-title>{{'ADD_ROD.TITLE'|translate}}</mat-card-title>
+        </mat-card-header>   
+        
+        <mat-card-content class="mat-card-content-form">
+            <form class="form-add" [formGroup]="rodForm">
+                <mat-form-field>
+                    <input formControlName="name" matInput placeholder="{{'ADD_ROD.FORM.NAME_PLACEHOLDER'|translate}}">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <input formControlName="image" matInput type="url" placeholder="http://...">
+                    <mat-label><fa-icon icon="link" class="btn-fa-icon_r"></fa-icon> <b> Image URL:</b></mat-label>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input formControlName="weightG" matInput type="number" placeholder="{{'ADD_ROD.FORM.WEIGHT_PLACEHOLDER'|translate}}">                        
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input formControlName="testOfBaitG" matInput type="number" placeholder="{{'ADD_ROD.FORM.TESTOFBAIT_PLACEHOLDER'|translate}}">                        
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <input formControlName="testOfFishingLineLb" matInput type="number" placeholder="{{'ADD_ROD.FORM.TESTOFFISHINGLINE_PLACEHOLDER'|translate}}">                        
+                </mat-form-field>
+    
+
+                <mat-form-field>
+                    <textarea formControlName="description" matInput placeholder="{{'ADD_ROD.FORM.DESCRIPTION_PLACEHOLDER'|translate}}"></textarea>
+                </mat-form-field>
+                
+
+                <mat-form-field>
+                    <input formControlName="price" matInput type="number" placeholder="{{'ADD_ROD.FORM.PRICE_PLACEHOLDER'|translate}}">
+                    <mat-label><b> $</b></mat-label>
+                </mat-form-field>                
+
+                <mat-form-field>
+                    <input formControlName="sections" matInput type="number" placeholder="{{'ADD_ROD.FORM.SECTIONS_PLACEHOLDER'|translate}}">                        
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-select formControlName="formationType" placeholder="{{'ADD_ROD.FORM.FORMATIONTYPE_PLACEHOLDER'|translate}}">
+                    <mat-option value="option">Option</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select formControlName="catchingType" placeholder="{{'ADD_ROD.FORM.CATCHINGTYPE_PLACEHOLDER'|translate}}">
+                    <mat-option value="option">Option</mat-option>
+                    </mat-select>
+                </mat-form-field>
+   
+                
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+                <button (click)="onSubmitRodForm()" class="mat-button-add" mat-button >{{'GENERAL.ADD' | translate}} <fa-icon icon="check" class="btn-fa-icon_r"></fa-icon></button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+

@@ -32,6 +32,9 @@ import { StoreroomItemComponent } from './components/storeroom/storeroom-item/st
 import { RodDetailDialogComponent } from './components/storeroom/detail/rod-detail-dialog/rod-detail-dialog.component';
 import { ReelDetailDialogComponent } from './components/storeroom/detail/reel-detail-dialog/reel-detail-dialog.component';
 import { WobblerDetailDialogComponent } from './components/storeroom/detail/wobbler-detail-dialog/wobbler-detail-dialog.component';
+import { WobblerAddComponent } from './components/storeroom/add/wobbler-add/wobbler-add.component';
+import { ReelAddComponent } from './components/storeroom/add/reel-add/reel-add.component';
+import { RodAddComponent } from './components/storeroom/add/rod-add/rod-add.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { WobblerDetailDialogComponent } from './components/storeroom/detail/wobb
     StoreroomItemComponent,
     RodDetailDialogComponent,
     ReelDetailDialogComponent,
-    WobblerDetailDialogComponent
+    WobblerDetailDialogComponent,
+    WobblerAddComponent,
+    ReelAddComponent,
+    RodAddComponent
   ],
   imports: [
     BrowserModule,

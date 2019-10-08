@@ -4,7 +4,8 @@
         "FILTER":{
             "TITLE":"Filter"
         },
-        "TOTAL_PRICE":"Total price:"
+        "TOTAL_PRICE":"Total price:",
+        "ADD":"Add"
     },
     "SPIN_FISHING":{
         "MENU_ITEM":"Spin fishing"
@@ -25,6 +26,20 @@
             "TITLE":"Wobblers"            
         }
 
+    },
+    "ADD_ROD":{
+        "TITLE":"Add rod to storeroom",
+        "FORM":{
+            "NAME_PLACEHOLDER":"Name",
+            "DESCRIPTION_PLACEHOLDER":"Description",
+            "PRICE_PLACEHOLDER":"Price",
+            "WEIGHT_PLACEHOLDER":"Weight(g)",
+            "SECTIONS_PLACEHOLDER":"Sections",
+            "TESTOFBAIT_PLACEHOLDER":"Test of bait(g)",
+            "TESTOFFISHINGLINE_PLACEHOLDER":"Test of fishing line(Lb)",
+            "FORMATIONTYPE_PLACEHOLDER":"Formation type",
+            "CATCHINGTYPE_PLACEHOLDER":"Catching type"
+        }
     },
     "DASHBOARD": {
 
