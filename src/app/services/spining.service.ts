@@ -19,7 +19,7 @@ export class SpiningService {
    * @param userId - id пользователя
    */
   public getAllRods(): Observable<any[]> {
-    return this.db.collection('Things').valueChanges();
+    return this.db.collection('Rods').valueChanges();
   }
 
 }

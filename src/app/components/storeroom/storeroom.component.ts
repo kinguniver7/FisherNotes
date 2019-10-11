@@ -6,6 +6,7 @@ import { CatchingType } from 'src/app/core/interfaces/catching-type';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Rod } from 'src/app/core/interfaces/fishing_tackle/rod';
 
 @Component({
   selector: 'app-storeroom',
@@ -13,6 +14,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./storeroom.component.scss']
 })
 export class StoreroomComponent implements OnInit {
+  rods: Rod[];
+
+
   filterPanelOpenState = false;
   fltGroups: SelectItem[] = [
     {value: '-1', text: 'All'},
@@ -39,7 +43,8 @@ export class StoreroomComponent implements OnInit {
   ngOnInit() {
 
     this.spiningService.getAllRods().subscribe(data => {
-      //debugger; 
+      this.rods = data;
+      debugger;
     });
   }
 

@@ -36,6 +36,7 @@ import { WobblerAddComponent } from './components/storeroom/add/wobbler-add/wobb
 import { ReelAddComponent } from './components/storeroom/add/reel-add/reel-add.component';
 import { RodAddComponent } from './components/storeroom/add/rod-add/rod-add.component';
 import { EnumKeysPipe } from './pipes/enum-keys.pipe';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarRef } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { EnumKeysPipe } from './pipes/enum-keys.pipe';
     ReelDetailDialogComponent,
     WobblerDetailDialogComponent
   ],
-  providers: [AngularFireAuthGuard],
+  providers: [AngularFireAuthGuard
+   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

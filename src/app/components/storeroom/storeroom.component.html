@@ -44,7 +44,7 @@
         <mat-divider></mat-divider>
         <div class="container">
             <div fxLayout="row" fxLayoutAlign="space-between center">
-                <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
+                <app-storeroom-item *ngFor="let rod of rods" class="storeroom-items__item" [thing]="rod"></app-storeroom-item>
             </div>            
         </div>
     </mat-card>

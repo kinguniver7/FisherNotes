@@ -33,8 +33,7 @@ export class AppComponent implements OnInit{
               private breakpointObserver: BreakpointObserver,
               public afAuth: AngularFireAuth,
               private router: Router) {
-    this.user = afAuth.authState;
-   
+    this.user = afAuth.authState;   
     translate.addLangs(['en', 'ru', 'uk']);
     translate.setDefaultLang('en');
     const currentLanguage = translate.getBrowserLang();
@@ -45,10 +44,10 @@ export class AppComponent implements OnInit{
     this.user.subscribe(data => {
       if (data && data.isAnonymous !== null) {
         this.isAuthenticated = !data.isAnonymous;
-        // set avatar
+        // set avatar        
         this.avatar.nativeElement.style.backgroundImage = 'url(' + data.photoURL + ')';
         this.name.nativeElement.innerHTML = data.displayName;
-        this.name.nativeElement.innerHTML = data.email;
+        this.email.nativeElement.innerHTML = data.email;
       }
     } );
   }

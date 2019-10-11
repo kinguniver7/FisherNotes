@@ -4,10 +4,10 @@ import { ThingType } from '../../enums/thing-type';
  * Вещь
  */
 export interface Thing {
-    id: string;
+    id?: string;
     name: string;
     description: string;
-    image: AppImage;
+    imageUrl: string;
     price: number;
     // вес
     weightG: number;

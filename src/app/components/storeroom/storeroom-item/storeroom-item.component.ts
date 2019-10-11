@@ -6,17 +6,23 @@ import { RodDetailDialogComponent } from '../detail/rod-detail-dialog/rod-detail
 import { ReelDetailDialogComponent } from '../detail/reel-detail-dialog/reel-detail-dialog.component';
 import { WobblerDetailDialogComponent } from '../detail/wobbler-detail-dialog/wobbler-detail-dialog.component';
 
+
 @Component({
   selector: 'app-storeroom-item',
   templateUrl: './storeroom-item.component.html',
   styleUrls: ['./storeroom-item.component.scss']
 })
 export class StoreroomItemComponent implements OnInit {
-  @Input() thing: any = {id: '123', name: 'ZEMEX', description: 'Text', type: ThingType.Wobbler as number};
+  @Input() thing: any = {};
   dialogWidth: '400px';
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    let data = this.thing;
+    if(data !== undefined){
+      debugger;
+    }
+    
   }
 
   openDetailsDialog(): void {

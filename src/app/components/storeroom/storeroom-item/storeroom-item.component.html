@@ -1,7 +1,7 @@
 <mat-card>
-        <img mat-card-image src="assets/img/temp/rudra.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image src='{{thing.imageUrl !== null && thing.imageUrl || "assets/img/no_image.png"}}' alt="Photo of a Shiba Inu">
         <mat-card-content>
-          <b>Воблер OSP Rudra 130SP</b>          
+          <b>{{thing.name}}</b>          
         </mat-card-content>
         <mat-card-actions fxLayout="row" >
           <button mat-button fxFlex="50" (click)="openDetailsDialog()"><fa-icon icon="external-link-alt"></fa-icon></button>
