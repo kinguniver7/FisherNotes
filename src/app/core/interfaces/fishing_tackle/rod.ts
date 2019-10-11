@@ -21,17 +21,17 @@ export interface Rod extends Thing {
  */
 export enum RodFormationType {
     // медленный
-    slow,
+    Slow,
     // средне-медленный
-    regularSlow,
+    RegularSlow,
     // средний
-    regular,
+    Regular,
     // средне-быстрый
-    regularFast,
+    RegularFast,
     // быстрый
-    fast,
+    Fast,
     // очень быстрый
-    extraFast
+    ExtraFast
 
 
 }

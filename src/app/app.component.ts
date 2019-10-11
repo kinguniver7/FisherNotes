@@ -18,6 +18,8 @@ export class AppComponent implements OnInit{
   isAuthenticated: any = false;
 
   @ViewChild('avatar', {static: false}) avatar: ElementRef;
+  @ViewChild('name', {static: false}) name: ElementRef;
+  @ViewChild('email', {static: false}) email: ElementRef;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -45,6 +47,8 @@ export class AppComponent implements OnInit{
         this.isAuthenticated = !data.isAnonymous;
         // set avatar
         this.avatar.nativeElement.style.backgroundImage = 'url(' + data.photoURL + ')';
+        this.name.nativeElement.innerHTML = data.displayName;
+        this.name.nativeElement.innerHTML = data.email;
       }
     } );
   }

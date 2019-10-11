@@ -26,12 +26,12 @@ export class StoreroomComponent implements OnInit {
   fltCatchingType: CatchingType;
 
   allThinks: Thing[] = [];
-  constructor(private spiningService: SpiningService, private route: ActivatedRoute) {    
+  constructor(private spiningService: SpiningService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       if (params.catchingType && params.catchingType as CatchingType) {
         this.fltCatchingType = params.catchingType;
       } else {
-        this.fltCatchingType = CatchingType.all as number;
+        this.fltCatchingType = CatchingType.All as number;
       }
     });
    }

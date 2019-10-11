@@ -35,6 +35,7 @@ import { WobblerDetailDialogComponent } from './components/storeroom/detail/wobb
 import { WobblerAddComponent } from './components/storeroom/add/wobbler-add/wobbler-add.component';
 import { ReelAddComponent } from './components/storeroom/add/reel-add/reel-add.component';
 import { RodAddComponent } from './components/storeroom/add/rod-add/rod-add.component';
+import { EnumKeysPipe } from './pipes/enum-keys.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { RodAddComponent } from './components/storeroom/add/rod-add/rod-add.comp
     WobblerDetailDialogComponent,
     WobblerAddComponent,
     ReelAddComponent,
-    RodAddComponent
+    RodAddComponent,
+    EnumKeysPipe
   ],
   imports: [
     BrowserModule,
