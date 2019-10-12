@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Thing } from 'src/app/core/interfaces/fishing_tackle/thing';
 
 @Component({
   selector: 'app-rod-detail-dialog',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RodDetailDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Thing) { debugger; }
 
   ngOnInit() {
   }

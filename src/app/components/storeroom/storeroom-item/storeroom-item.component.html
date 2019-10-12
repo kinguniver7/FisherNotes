@@ -1,10 +1,10 @@
 <mat-card>
-        <img mat-card-image src='{{thing.imageUrl !== null && thing.imageUrl || "assets/img/no_image.png"}}' alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <b>{{thing.name}}</b>          
-        </mat-card-content>
-        <mat-card-actions fxLayout="row" >
-          <button mat-button fxFlex="50" (click)="openDetailsDialog()"><fa-icon icon="external-link-alt"></fa-icon></button>
-          <button mat-button fxFlex="50"><fa-icon icon="trash"></fa-icon></button>          
-        </mat-card-actions>
-      </mat-card>
+  <img mat-card-image src='{{thing.imageUrl !== null && thing.imageUrl || "assets/img/no_image.png"}}' alt="photo">
+  <mat-card-content>
+    <b>{{thing.name}}</b>          
+  </mat-card-content>
+  <mat-card-actions fxLayout="row" >
+    <button mat-button fxFlex="50" (click)="openDetailsDialog()"><fa-icon icon="external-link-alt"></fa-icon></button>
+    <button mat-button fxFlex="50"><fa-icon icon="trash"></fa-icon></button>          
+  </mat-card-actions>
+</mat-card>

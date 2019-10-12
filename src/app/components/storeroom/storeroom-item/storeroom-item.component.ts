@@ -18,11 +18,6 @@ export class StoreroomItemComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    let data = this.thing;
-    if(data !== undefined){
-      debugger;
-    }
-    
   }
 
   openDetailsDialog(): void {

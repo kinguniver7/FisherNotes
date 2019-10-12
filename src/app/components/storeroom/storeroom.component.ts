@@ -44,7 +44,6 @@ export class StoreroomComponent implements OnInit {
 
     this.spiningService.getAllRods().subscribe(data => {
       this.rods = data;
-      debugger;
     });
   }
 

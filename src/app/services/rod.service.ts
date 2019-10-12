@@ -28,7 +28,13 @@ export class RodService {
    * @param userId - id пользователя
    */
   public getAllRods(type: CatchingType = CatchingType.All as number): Observable<Rod[]> {
-    return this.rods.pipe(map(types => types.map(item => {if (item.catchingType === type) { return item; }})));
+    return this.rods.pipe(map(types => types.map(item => {if (item.catchingType === type) { debugger; return item; }})));
+  }
+
+  public getRodById(id: any): Observable<Rod> {
+    let rodRef: any = this.rodsCollection.doc<Rod>('Rods/' + id);
+    this.db.doc(rodRef)
+    return rodRef.valueChanges();
   }
 
   public addRod(rod: Rod) {
