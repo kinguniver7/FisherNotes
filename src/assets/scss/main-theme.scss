@@ -138,6 +138,12 @@ $fox-theme: mat-light-theme($fox-palette-primary, $fox-palette-accent);
 //BUTTONS
 .mat-button-add{
   max-height: 36px;
+  max-width: 100px;
   color: mat-contrast($fox-primary, 400); 
   background-color: mat-color($fox-primary, 400);
+}
+
+//CONTROLS
+.mat-form-field{
+  padding: 5px 10px 0px 10px;
 }

@@ -47,8 +47,10 @@
             <a mat-button (click)='signOut()' routerLink="sign-up" *ngIf='isAuthenticated'>Sign out<fa-icon icon="sign-out-alt" class="btn-fa-icon_l"></fa-icon></a>
         </span>
       </mat-toolbar>
-
-      
+      <mat-progress-bar
+        *ngIf="loading" color="accent" mode="indeterminate">
+      </mat-progress-bar>
+      <app-loader></app-loader>
       <!-- Add Content Here -->
       <router-outlet></router-outlet>
     </mat-sidenav-content>

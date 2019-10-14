@@ -5,7 +5,23 @@
             "TITLE":"Filter"
         },
         "TOTAL_PRICE":"Total price:",
-        "ADD":"Add"
+        "ADD":"Add",
+        "UPDATE":"Update",
+        "OK":"Ok",
+        "CLOSE":"Close",
+        "CONFIRM_DELETE":"Are you sure want to delete?",
+        "SPECIFICATIONS":"Specifications",
+        "NOTES":"Notes"
+    },
+    "ERROR":{
+        "TITLE":"Error",
+        "FORM_NOT_VALIDATE":"Form is not validating"
+    },
+    "MESSAGE":{
+        "TITLE":"Message",
+        "ADDED":"Added",
+        "UPDATED": "Updated"
+
     },
     "SPIN_FISHING":{
         "MENU_ITEM":"Spin fishing"
@@ -27,8 +43,8 @@
         }
 
     },
-    "ADD_ROD":{
-        "TITLE":"Add rod to storeroom",
+    "ROD":{
+        "ADD_TITLE":"Add rod to storeroom",
         "FORM":{
             "NAME_PLACEHOLDER":"Name",
             "DESCRIPTION_PLACEHOLDER":"Description",

@@ -6,7 +6,14 @@ import { map, shareReplay } from 'rxjs/operators';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import { Router } from '@angular/router';
+import {
+  Event,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router
+} from '@angular/router';
 
 
 @Component({
@@ -16,6 +23,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   isAuthenticated: any = false;
+  loading = false;
 
   @ViewChild('avatar', {static: false}) avatar: ElementRef;
   @ViewChild('name', {static: false}) name: ElementRef;
@@ -33,11 +41,31 @@ export class AppComponent implements OnInit{
               private breakpointObserver: BreakpointObserver,
               public afAuth: AngularFireAuth,
               private router: Router) {
-    this.user = afAuth.authState;   
-    translate.addLangs(['en', 'ru', 'uk']);
-    translate.setDefaultLang('en');
-    const currentLanguage = translate.getBrowserLang();
-    translate.use(currentLanguage.match(/en|ru|uk/) ? currentLanguage : 'en');
+                this.router.events.subscribe((event: Event) => {
+                  switch (true) {
+                    case event instanceof NavigationStart: {
+                      this.loading = true;
+                      break;
+                    }
+                    case event instanceof NavigationEnd:
+                    case event instanceof NavigationCancel:
+                    case event instanceof NavigationError: {
+                      this.loading = false;
+                      break;
+                    }
+                    default: {
+                      break;
+                    }
+                  }
+                });
+                this.user = afAuth.authState;
+                translate.addLangs(['en', 'ru', 'uk']);
+                translate.setDefaultLang('en');
+                const currentLanguage = translate.getBrowserLang();
+                translate.use(currentLanguage.match(/en|ru|uk/) ? currentLanguage : 'en');
+
+
+
   }
 
   ngOnInit() {

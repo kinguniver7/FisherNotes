@@ -23,8 +23,12 @@ import {
   MatCardModule,
   MatDialogModule,
   MatSnackBarModule,
-  MAT_SNACK_BAR_DEFAULT_OPTIONS,
-  MatSnackBarRef
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatTabsModule,
+
+  MAT_SNACK_BAR_DEFAULT_OPTIONS
+
 } from '@angular/material';
 
 
@@ -52,8 +56,10 @@ import {
       MatExpansionModule,
       MatCardModule,
       MatDialogModule,
-      MatSnackBarModule
-      
+      MatSnackBarModule,
+      MatProgressBarModule,
+      MatProgressSpinnerModule,
+      MatTabsModule
   ],
   exports: [
     MatButtonModule,
@@ -74,10 +80,12 @@ import {
     MatPaginatorModule,
     MatExpansionModule,
     MatCardModule,
-    MatDialogModule
-    
+    MatDialogModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatTabsModule
  ],
- providers:[
+ providers: [
   {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 3000}}
 ],
 })

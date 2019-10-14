@@ -1,13 +1,52 @@
-<mat-card>
-    <img mat-card-image src='{{data.imageUrl !== null && data.imageUrl || "assets/img/no_image.png"}}' alt="photo">
-    <mat-card-content>
-      <b>{{data.name}}</b>      
-    </mat-card-content>
-    <mat-card-actions fxLayout="row" >
-      <button mat-button fxFlex="50" (click)="openDetailsDialog()"><fa-icon icon="external-link-alt"></fa-icon></button>
-      <button mat-button fxFlex="50"><fa-icon icon="trash"></fa-icon></button>          
-    </mat-card-actions>
-  </mat-card>
+<img mat-card-image src='{{data.imageUrl !== null && data.imageUrl || "assets/img/no_image.png"}}' alt="photo">
+<mat-tab-group>
+  <mat-tab>
+      <ng-template mat-tab-label>
+          {{'GENERAL.SPECIFICATIONS'| translate}}
+      </ng-template>
+      <table>
+          <tbody>
+                <tr>
+                  <th>{{'ROD.FORM.CATCHINGTYPE_PLACEHOLDER'|translate}}: </th>
+                  <td>{{catchingType}}</td>
+                </tr>
+                <tr>
+                    <th>{{'ROD.FORM.WEIGHT_PLACEHOLDER'|translate}}: </th>
+                    <td>{{data.weightG}}</td>
+                </tr>
+                <tr>
+                    <th>{{'ROD.FORM.TESTOFBAIT_PLACEHOLDER'|translate}}: </th>
+                    <td>{{data.testOfBaitG}}</td>
+                </tr>
+                <tr>
+                    <th>{{'ROD.FORM.TESTOFFISHINGLINE_PLACEHOLDER'|translate}}: </th>
+                    <td>{{data.testOfFishingLineLb}}</td>
+                </tr>
+                <tr>
+                    <th>{{'ROD.FORM.SECTIONS_PLACEHOLDER'|translate}}: </th>
+                    <td>{{data.sections}}</td>
+                </tr>
+                <tr>
+                    <th>{{'ROD.FORM.FORMATIONTYPE_PLACEHOLDER'|translate}}: </th>
+                    <td>{{formationType}}</td>
+                </tr>
+          </tbody>
+      </table>
+  </mat-tab>
+  <mat-tab>
+      <ng-template mat-tab-label>
+          {{'GENERAL.NOTES'| translate}}
+      </ng-template>
+      <div>
+        {{data.description}}
+      </div>
+  </mat-tab>
+  
+</mat-tab-group>
+
+<mat-divider></mat-divider>
+
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close>No</button>    
+    <button mat-button mat-dialog-close>{{'GENERAL.OK'| translate}}</button>
+    <button mat-button mat-dialog-close [routerLink]="[ '/storeroom/edit-rod', data.id ]"><fa-icon icon="edit"></fa-icon></button>    
 </mat-dialog-actions>

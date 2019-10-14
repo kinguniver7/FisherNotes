@@ -9,11 +9,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SpiningService {
+export class SpinningService {
 
   private API_URL = environment.API_URL;
   constructor(private db: AngularFirestore) { }
-  
   /**
    * Получить все удилища для спининговой ловли
    * @param userId - id пользователя

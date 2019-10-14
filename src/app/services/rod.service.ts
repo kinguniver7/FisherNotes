@@ -17,8 +17,8 @@ export class RodService {
     this.rods = this.rodsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Rod;
-        const id = a.payload.doc.id;
-        return { id, ...data };
+        data.id = a.payload.doc.id;
+        return data;
       }))
     );
   }
@@ -28,17 +28,31 @@ export class RodService {
    * @param userId - id пользователя
    */
   public getAllRods(type: CatchingType = CatchingType.All as number): Observable<Rod[]> {
-    return this.rods.pipe(map(types => types.map(item => {if (item.catchingType === type) { debugger; return item; }})));
+    return this.rods.pipe(map(types => types.map(item => {
+      if (type === CatchingType.All as number){
+        return item;
+      } else if (item.catchingType === type) {
+         return item;
+        }
+      })));
   }
 
   public getRodById(id: any): Observable<Rod> {
-    let rodRef: any = this.rodsCollection.doc<Rod>('Rods/' + id);
-    this.db.doc(rodRef)
+    const rodRef: any = this.rodsCollection.doc<Rod>(id);
+    this.db.doc(rodRef);
     return rodRef.valueChanges();
   }
 
   public addRod(rod: Rod) {
     return this.rodsCollection.add(rod);
+  }
+
+  public updateRod(rod: Rod) {
+    return this.db.doc<Rod>('Rods/' + rod.id).update(rod);
+  }
+
+  public removeRod(id: any) {
+    return this.db.doc('Rods/' + id).delete();
   }
 
 }

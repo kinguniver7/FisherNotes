@@ -17,8 +17,10 @@ import {
   faExternalLinkAlt,
   faCheck,
   faLink,
+  faEdit,
+  faEye,
 
-  fas,
+  fas
  } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
@@ -49,6 +51,8 @@ export class FaModule {
     faStickyNote,
     faExternalLinkAlt,
     faCheck,
-    faLink);
+    faLink,
+    faEdit,
+    faEye);
   }
 }

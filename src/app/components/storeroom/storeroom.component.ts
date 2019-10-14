@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { SpiningService } from 'src/app/services/spining.service';
+import { SpinningService } from 'src/app/services/spinning.service';
 import { SelectItem } from 'src/app/core/interfaces/select-item';
 import { Thing } from 'src/app/core/interfaces/fishing_tackle/thing';
 import { CatchingType } from 'src/app/core/interfaces/catching-type';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Rod } from 'src/app/core/interfaces/fishing_tackle/rod';
+import { LoaderService } from 'src/app/shared/services/loader.service';
+import { RodService } from 'src/app/services/rod.service';
 
 @Component({
   selector: 'app-storeroom',
@@ -15,7 +16,7 @@ import { Rod } from 'src/app/core/interfaces/fishing_tackle/rod';
 })
 export class StoreroomComponent implements OnInit {
   rods: Rod[];
-
+  data: any;
 
   filterPanelOpenState = false;
   fltGroups: SelectItem[] = [
@@ -30,7 +31,10 @@ export class StoreroomComponent implements OnInit {
   fltCatchingType: CatchingType;
 
   allThinks: Thing[] = [];
-  constructor(private spiningService: SpiningService, private route: ActivatedRoute) {
+  constructor(
+    public rodService: RodService,
+    private route: ActivatedRoute,
+    private loaderService: LoaderService) {
     this.route.queryParams.subscribe(params => {
       if (params.catchingType && params.catchingType as CatchingType) {
         this.fltCatchingType = params.catchingType;
@@ -41,10 +45,10 @@ export class StoreroomComponent implements OnInit {
    }
 
   ngOnInit() {
-
-    this.spiningService.getAllRods().subscribe(data => {
+    this.loaderService.show();
+    this.rodService.getAllRods().subscribe(data => {
       this.rods = data;
-    });
+      this.loaderService.hide();
+    }, () => {this.loaderService.hide(); });
   }
-
 }

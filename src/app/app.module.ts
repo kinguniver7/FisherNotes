@@ -9,7 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -18,6 +18,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BackpackComponent } from './components/backpack/backpack.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +37,9 @@ import { WobblerAddComponent } from './components/storeroom/add/wobbler-add/wobb
 import { ReelAddComponent } from './components/storeroom/add/reel-add/reel-add.component';
 import { RodAddComponent } from './components/storeroom/add/rod-add/rod-add.component';
 import { EnumKeysPipe } from './pipes/enum-keys.pipe';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarRef } from '@angular/material/snack-bar';
+import { LoaderService } from './shared/services/loader.service';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,13 +51,17 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarRef } from '@angular/material
     SpinFishingComponent,
     StoreroomComponent,
     StoreroomItemComponent,
+
     RodDetailDialogComponent,
     ReelDetailDialogComponent,
     WobblerDetailDialogComponent,
+    ConfirmDialogComponent,
+    
     WobblerAddComponent,
     ReelAddComponent,
     RodAddComponent,
-    EnumKeysPipe
+    EnumKeysPipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -83,10 +90,10 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarRef } from '@angular/material
   entryComponents: [
     RodDetailDialogComponent,
     ReelDetailDialogComponent,
-    WobblerDetailDialogComponent
+    WobblerDetailDialogComponent,
+    ConfirmDialogComponent
   ],
-  providers: [AngularFireAuthGuard
-   ],
+  providers: [AngularFireAuthGuard, LoaderService, { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

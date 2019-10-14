@@ -4,7 +4,8 @@
     <b>{{thing.name}}</b>          
   </mat-card-content>
   <mat-card-actions fxLayout="row" >
-    <button mat-button fxFlex="50" (click)="openDetailsDialog()"><fa-icon icon="external-link-alt"></fa-icon></button>
-    <button mat-button fxFlex="50"><fa-icon icon="trash"></fa-icon></button>          
+    <button mat-button fxFlex="35" (click)="openDetailsDialog()"><fa-icon icon="eye"></fa-icon></button>
+    <button mat-button fxFlex="30" [routerLink]="[ '/storeroom/edit-rod', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
+    <button mat-button fxFlex="35" (click)="openRemoveItemDialog()"><fa-icon icon="trash"></fa-icon></button>            
   </mat-card-actions>
 </mat-card>
