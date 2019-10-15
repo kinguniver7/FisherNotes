@@ -78,9 +78,9 @@ export class RodAddComponent implements OnInit {
   }
   onSubmitRodForm() {
     if (this.rodForm.valid) {
+      this.loaderService.show();
       const formModel = this.rodForm.value;
       const rodModel: Rod = {
-        id: this.id || undefined,
         name: formModel.name as string,
         description: formModel.description as string,
         imageUrl: formModel.imageUrl as string,
@@ -93,8 +93,9 @@ export class RodAddComponent implements OnInit {
         formationType: +formModel.formationType,
         catchingType: +formModel.catchingType
       };
-      this.loaderService.show();
+
       if (this.id) {
+        rodModel.id = this.id;
         this.rodService.updateRod(rodModel).then(() => {
           this.loaderService.hide();
           this.snackBar.open(
