@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { Rod } from 'src/app/core/interfaces/fishing_tackle/rod';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { RodService } from 'src/app/services/rod.service';
+import { UserService } from 'src/app/services/user.service';
+import { UserApp } from 'src/app/core/interfaces/user-app';
 
 @Component({
   selector: 'app-storeroom',
@@ -17,6 +19,8 @@ import { RodService } from 'src/app/services/rod.service';
 export class StoreroomComponent implements OnInit {
   rods: Rod[];
   data: any;
+
+  userApp: UserApp;
 
   filterPanelOpenState = false;
   fltGroups: SelectItem[] = [
@@ -32,21 +36,25 @@ export class StoreroomComponent implements OnInit {
 
   allThinks: Thing[] = [];
   constructor(
+    private userService: UserService,
     public rodService: RodService,
     private route: ActivatedRoute,
     private loaderService: LoaderService) {
-    this.route.queryParams.subscribe(params => {
-      if (params.catchingType && params.catchingType as CatchingType) {
-        this.fltCatchingType = params.catchingType;
-      } else {
-        this.fltCatchingType = CatchingType.All as number;
-      }
-    });
+
+      this.userApp = userService.getCurrentUser();
+
+      this.route.queryParams.subscribe(params => {
+        if (params.catchingType && params.catchingType as CatchingType) {
+          this.fltCatchingType = params.catchingType;
+        } else {
+          this.fltCatchingType = CatchingType.All as number;
+        }
+      });
    }
 
   ngOnInit() {
     this.loaderService.show();
-    this.rodService.getAllRods().subscribe(data => {
+    this.rodService.getAllRods(this.userApp.id).subscribe(data => {
       this.rods = data;
       this.loaderService.hide();
     }, () => {this.loaderService.hide(); });

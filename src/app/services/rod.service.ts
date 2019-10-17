@@ -11,31 +11,17 @@ import { Rod } from '../core/interfaces/fishing_tackle/rod';
 export class RodService {
   private rodsCollection: AngularFirestoreCollection<Rod>;
   rods: Observable<Rod[]>;
-  constructor(private db: AngularFirestore) {     
+  constructor(private db: AngularFirestore) {
     this.rodsCollection = this.db.collection<Rod>('Rods');
-
-    /* this.rods = this.rodsCollection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Rod;
-        data.id = a.payload.doc.id;
-        return data;
-      }))
-    ); */
   }
 
   /**
    * Получить все удилища по типу ловли
    * @param userId - id пользователя
    */
-  public getAllRods(type: CatchingType = CatchingType.All as number): Observable<Rod[]> {
-    return this.rodsCollection.valueChanges({idField: 'id'});
-    /* return this.rods.pipe(map(types => types.map(item => {
-      if (type === CatchingType.All as number) {
-        return item;
-      } else if (item.catchingType === type) {
-         return item;
-        }
-      }))); */
+  public getAllRods(userId: string, type: CatchingType = CatchingType.All as number): Observable<Rod[]> {
+    return this.rodsCollection.valueChanges({idField: 'id'}).pipe(
+      map(items => items.filter(item => item.userId === userId)));
   }
 
   public getRodById(id: any): Observable<Rod> {

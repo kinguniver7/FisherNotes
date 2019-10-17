@@ -5,6 +5,7 @@ import { ThingType } from '../../enums/thing-type';
  */
 export interface Thing {
     id?: string;
+    userId: string;
     name: string;
     description: string;
     imageUrl: string;

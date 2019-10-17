@@ -8,6 +8,8 @@ import { MatSnackBar, MAT_SNACK_BAR_DATA, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
+import { UserService } from 'src/app/services/user.service';
+import { UserApp } from 'src/app/core/interfaces/user-app';
 
 @Component({
   selector: 'app-rod-add',
@@ -17,11 +19,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class RodAddComponent implements OnInit {
   // ID for edit thing
   id: any;
+  userApp: UserApp;
   catchingTypes = CatchingType;
   formationType = RodFormationType;
   rodForm: FormGroup;
 
   constructor(
+    private userService: UserService,
     private fb: FormBuilder,
     private translate: TranslateService,
     private rodService: RodService,
@@ -30,6 +34,8 @@ export class RodAddComponent implements OnInit {
     private route: Router,
     private loaderService: LoaderService,
     activateRoute: ActivatedRoute) {
+      this.userApp = this.userService.getCurrentUser();
+debugger;
       this.createForm();
       this.id = activateRoute.snapshot.params.id;
       if (this.id) {
@@ -81,6 +87,7 @@ export class RodAddComponent implements OnInit {
       this.loaderService.show();
       const formModel = this.rodForm.value;
       const rodModel: Rod = {
+        userId: this.userApp.id,
         name: formModel.name as string,
         description: formModel.description as string,
         imageUrl: formModel.imageUrl as string,
