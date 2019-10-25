@@ -10,6 +10,7 @@ import { RodService } from 'src/app/services/rod.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ReelService } from 'src/app/services/reel.service';
+import { WobblerService } from 'src/app/services/wobbler.service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class StoreroomItemComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private rodService: RodService,
               private reelService: ReelService,
+              private wobblerService: WobblerService,
               private loaderService: LoaderService,
               private translate: TranslateService) { }
 
@@ -61,7 +63,7 @@ export class StoreroomItemComponent implements OnInit {
  */
   openRemoveItemDialog(): void {
     let removeThingHandler: any;
-
+    
     switch (this.thing.type) {
       case ThingType.Rod:
         removeThingHandler = () => {
@@ -80,8 +82,13 @@ export class StoreroomItemComponent implements OnInit {
         };
         break;
       case ThingType.Wobbler:
-          removeThingHandler = () => {console.log('Remove wobbler'); };
-          break;
+        removeThingHandler = () => {
+          this.loaderService.show();
+          this.wobblerService.remove(this.thing.id).then(() => {
+            this.loaderService.hide();
+          }).catch(() => {this.loaderService.hide(); });
+        };
+        break;
       default:
           removeThingHandler += () => {console.log('Remove default'); };
           break;

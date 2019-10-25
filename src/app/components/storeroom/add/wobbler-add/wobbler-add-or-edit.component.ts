@@ -95,7 +95,7 @@ export class WobblerAddOrEditComponent implements OnInit {
         imageUrl: formModel.imageUrl as string,
         price: formModel.price as number,
         weightG: formModel.weightG as number,
-        type: ThingType.Reel,
+        type: ThingType.Wobbler,
         length: formModel.length as number,
         lengthType: LengthType.mm,
         divesFrom: formModel.divesFrom as number,
