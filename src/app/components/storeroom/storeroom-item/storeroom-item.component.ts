@@ -9,6 +9,7 @@ import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog
 import { RodService } from 'src/app/services/rod.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ReelService } from 'src/app/services/reel.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class StoreroomItemComponent implements OnInit {
   dialogWidth: '640px';
   constructor(public dialog: MatDialog,
               private rodService: RodService,
+              private reelService: ReelService,
               private loaderService: LoaderService,
               private translate: TranslateService) { }
 
@@ -64,14 +66,19 @@ export class StoreroomItemComponent implements OnInit {
       case ThingType.Rod:
         removeThingHandler = () => {
           this.loaderService.show();
-          this.rodService.removeRod(this.thing.id).then(()=>{
+          this.rodService.removeRod(this.thing.id).then(() => {
             this.loaderService.hide();
           }).catch(() => {this.loaderService.hide(); });
-         };
+        };
         break;
       case ThingType.Reel:
-          removeThingHandler = () => {console.log('Remove reel'); };
-          break;
+        removeThingHandler = () => {
+          this.loaderService.show();
+          this.reelService.remove(this.thing.id).then(() => {
+            this.loaderService.hide();
+          }).catch(() => {this.loaderService.hide(); });
+        };
+        break;
       case ThingType.Wobbler:
           removeThingHandler = () => {console.log('Remove wobbler'); };
           break;

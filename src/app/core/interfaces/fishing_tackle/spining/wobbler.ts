@@ -19,7 +19,7 @@ export interface Wobbler extends Thing {
 /**
  * Классификация воблеров по плавучести:
  */
-enum WobblerFloatType {
+export enum WobblerFloatType {
     // приманка быстро тонущая
     FS,
     // это медленно тонущий воблер

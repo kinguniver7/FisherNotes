@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Wobbler } from '../core/interfaces/fishing_tackle/spining/wobbler';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,9 @@ export class WobblerService {
    * Получить все воблера
    * @param userId - id пользователя
    */
-  public getAll(): Observable<Wobbler[]> {
-    return this.firestoreCollection.valueChanges({idField: 'id'});
+  public getAll(userId: string): Observable<Wobbler[]> {
+    return this.firestoreCollection.valueChanges({idField: 'id'}).pipe(
+      map(items => items.filter(item => item.userId === userId)));
   }
 
   public getById(id: any): Observable<Wobbler> {

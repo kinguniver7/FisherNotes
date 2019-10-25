@@ -7,8 +7,9 @@ import { AngularMaterialModule } from './shared/angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 // import ngx-translate and the http loader
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
@@ -33,8 +34,8 @@ import { StoreroomItemComponent } from './components/storeroom/storeroom-item/st
 import { RodDetailDialogComponent } from './components/storeroom/detail/rod-detail-dialog/rod-detail-dialog.component';
 import { ReelDetailDialogComponent } from './components/storeroom/detail/reel-detail-dialog/reel-detail-dialog.component';
 import { WobblerDetailDialogComponent } from './components/storeroom/detail/wobbler-detail-dialog/wobbler-detail-dialog.component';
-import { WobblerAddComponent } from './components/storeroom/add/wobbler-add/wobbler-add.component';
-import { ReelAddComponent } from './components/storeroom/add/reel-add/reel-add.component';
+import { WobblerAddOrEditComponent } from './components/storeroom/add/wobbler-add/wobbler-add-or-edit.component';
+import { ReelAddOrEditComponent } from './components/storeroom/add/reel-add/reel-add-or-edit.component';
 import { RodAddComponent } from './components/storeroom/add/rod-add/rod-add.component';
 import { EnumKeysPipe } from './pipes/enum-keys.pipe';
 import { LoaderService } from './shared/services/loader.service';
@@ -56,9 +57,9 @@ import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confi
     ReelDetailDialogComponent,
     WobblerDetailDialogComponent,
     ConfirmDialogComponent,
-    
-    WobblerAddComponent,
-    ReelAddComponent,
+
+    WobblerAddOrEditComponent,
+    ReelAddOrEditComponent,
     RodAddComponent,
     EnumKeysPipe,
     LoaderComponent
@@ -73,6 +74,7 @@ import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confi
 
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,
+    NgxSpinnerModule,
     // ngx-translate and the loader module
     HttpClientModule,
     TranslateModule.forRoot({

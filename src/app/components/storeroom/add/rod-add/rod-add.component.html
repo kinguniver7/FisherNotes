@@ -7,62 +7,56 @@
         <mat-card-content class="mat-card-content-form">
             <form class="form-add" [formGroup]="rodForm" (ngSubmit)="onSubmitRodForm()">
                 <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex>
-                        <div fxLayout="column" fxFlex>
-                                <mat-form-field>
-                                        <input formControlName="name" matInput placeholder="*{{'ROD.FORM.NAME_PLACEHOLDER'|translate}}">
-                                        <mat-error *ngIf="rodForm.controls['name'].errors?.required &&
-                                        rodForm.controls['name'].touched">
-                                                Name is <strong>required</strong>
-                                    </mat-error>
-                                </mat-form-field>
-                    
-                                    <mat-form-field>
-                                        <mat-select formControlName="catchingType" placeholder="{{'ROD.FORM.CATCHINGTYPE_PLACEHOLDER'|translate}}">
-                                        <mat-option *ngFor="let type of catchingTypes | enumKeys" [value]="type.key">{{type.value}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    
-                                    <mat-form-field>
-                                        <input formControlName="imageUrl" matInput type="url" placeholder="http://...">
-                                        <mat-label><fa-icon icon="link" class="btn-fa-icon_r"></fa-icon> <b> Image URL:</b></mat-label>
-                                    </mat-form-field>
-                    
-                                    <mat-form-field>
-                                        <input formControlName="weightG" matInput type="number" placeholder="{{'ROD.FORM.WEIGHT_PLACEHOLDER'|translate}}">                        
-                                    </mat-form-field>
-                    
-                                    <mat-form-field>
-                                        <input formControlName="testOfBaitG" matInput type="number" placeholder="{{'ROD.FORM.TESTOFBAIT_PLACEHOLDER'|translate}}">                        
-                                    </mat-form-field>
+                    <div fxLayout="column" fxFlex>
+                        <mat-form-field>
+                            <input formControlName="name" matInput placeholder="*{{'THING.FORM.NAME_PLACEHOLDER'|translate}}">
+                            <mat-error *ngIf="rodForm.controls['name'].errors?.required && rodForm.controls['name'].touched">Name is <strong>required</strong></mat-error>
+                        </mat-form-field>
+                
+                        <mat-form-field>
+                            <mat-select formControlName="catchingType" placeholder="{{'ROD.FORM.CATCHINGTYPE_PLACEHOLDER'|translate}}">
+                            <mat-option *ngFor="let type of catchingTypes | enumKeys" [value]="type.key">{{type.value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                                
+                        <mat-form-field>
+                            <input formControlName="imageUrl" matInput type="url" placeholder="http://...">
+                            <mat-label><fa-icon icon="link" class="btn-fa-icon_r"></fa-icon> <b> Image URL:</b></mat-label>
+                        </mat-form-field>
+                
+                        <mat-form-field>
+                            <input formControlName="weightG" matInput type="number" placeholder="{{'THING.FORM.WEIGHT_PLACEHOLDER'|translate}}">                        
+                        </mat-form-field>
+                
+                        <mat-form-field>
+                            <input formControlName="testOfBaitG" matInput type="number" placeholder="{{'ROD.FORM.TESTOFBAIT_PLACEHOLDER'|translate}}">                        
+                        </mat-form-field>
+            
+                        <mat-form-field>
+                            <input formControlName="testOfFishingLineLb" matInput type="number" placeholder="{{'ROD.FORM.TESTOFFISHINGLINE_PLACEHOLDER'|translate}}">                        
+                        </mat-form-field>
+        
+                        <mat-form-field>
+                            <input formControlName="price" matInput type="number" placeholder="{{'THING.FORM.PRICE_PLACEHOLDER'|translate}}">
+                            <mat-label><b> $</b></mat-label>
+                        </mat-form-field>                
+                
+                        <mat-form-field>
+                            <input formControlName="sections" matInput type="number" placeholder="{{'ROD.FORM.SECTIONS_PLACEHOLDER'|translate}}">                        
+                        </mat-form-field>
                         
-                                    <mat-form-field>
-                                        <input formControlName="testOfFishingLineLb" matInput type="number" placeholder="{{'ROD.FORM.TESTOFFISHINGLINE_PLACEHOLDER'|translate}}">                        
-                                    </mat-form-field>
-                        
-                    
-                                   
-                    
-                                    <mat-form-field>
-                                        <input formControlName="price" matInput type="number" placeholder="{{'ROD.FORM.PRICE_PLACEHOLDER'|translate}}">
-                                        <mat-label><b> $</b></mat-label>
-                                    </mat-form-field>                
-                    
-                                    <mat-form-field>
-                                        <input formControlName="sections" matInput type="number" placeholder="{{'ROD.FORM.SECTIONS_PLACEHOLDER'|translate}}">                        
-                                    </mat-form-field>
-                                    
-                                    <mat-form-field>
-                                        <mat-select formControlName="formationType" placeholder="{{'ROD.FORM.FORMATIONTYPE_PLACEHOLDER'|translate}}">
-                                            <mat-option *ngFor="let type of formationType | enumKeys" [value]="type.key">{{type.value}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                        </div>
-                        <div fxFlex>
-                            <mat-form-field class="mat-description">
-                                <textarea formControlName="description" matInput placeholder="{{'ROD.FORM.DESCRIPTION_PLACEHOLDER'|translate}}" rows="8"></textarea>
-                            </mat-form-field>
-                                    
-                        </div>
+                        <mat-form-field>
+                            <mat-select formControlName="formationType" placeholder="{{'ROD.FORM.FORMATIONTYPE_PLACEHOLDER'|translate}}">
+                                <mat-option *ngFor="let type of formationType | enumKeys" [value]="type.key">{{type.value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex>
+                        <mat-form-field class="mat-description">
+                            <textarea formControlName="description" matInput placeholder="{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}" rows="8"></textarea>
+                        </mat-form-field>
+                                
+                    </div>
                 </div>
                 
 

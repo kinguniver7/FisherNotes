@@ -11,7 +11,7 @@
                   <td>{{catchingType}}</td>
                 </tr>
                 <tr>
-                    <th>{{'ROD.FORM.WEIGHT_PLACEHOLDER'|translate}}: </th>
+                    <th>{{'THING.FORM.WEIGHT_PLACEHOLDER'|translate}}: </th>
                     <td>{{data.weightG}}</td>
                 </tr>
                 <tr>
@@ -47,6 +47,6 @@
 <mat-divider></mat-divider>
 
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close>{{'GENERAL.OK'| translate}}</button>
-    <button mat-button mat-dialog-close [routerLink]="[ '/storeroom/edit-rod', data.id ]"><fa-icon icon="edit"></fa-icon></button>    
+    <button mat-raised-button mat-dialog-close color="primary">{{'GENERAL.OK'| translate}}</button>
+    <button mat-raised-button mat-dialog-close [routerLink]="[ '/storeroom/edit-rod', data.id ]"><fa-icon icon="edit"></fa-icon></button>    
 </mat-dialog-actions>

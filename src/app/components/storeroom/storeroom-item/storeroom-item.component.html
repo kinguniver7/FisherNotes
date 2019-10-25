@@ -4,8 +4,10 @@
     <b>{{thing.name}}</b>          
   </mat-card-content>
   <mat-card-actions fxLayout="row" >
-    <button mat-button fxFlex="35" (click)="openDetailsDialog()"><fa-icon icon="eye"></fa-icon></button>
-    <button mat-button fxFlex="30" [routerLink]="[ '/storeroom/edit-rod', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
-    <button mat-button fxFlex="35" (click)="openRemoveItemDialog()"><fa-icon icon="trash"></fa-icon></button>            
+    <button mat-icon-button  fxFlex="35" (click)="openDetailsDialog()"><fa-icon icon="eye"></fa-icon></button>
+    <button *ngIf="thing.type === 0" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-rod', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
+    <button *ngIf="thing.type === 1" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-reel', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
+    <button *ngIf="thing.type === 2" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-wobbler', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
+    <button mat-icon-button fxFlex="35" (click)="openRemoveItemDialog()"><fa-icon icon="trash"></fa-icon></button>            
   </mat-card-actions>
 </mat-card>

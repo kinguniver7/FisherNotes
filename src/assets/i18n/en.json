@@ -43,18 +43,35 @@
         }
 
     },
+    "THING":{
+        "FORM":{
+            "NAME_PLACEHOLDER":"Name",
+            "WEIGHT_PLACEHOLDER":"Weight(g)",
+            "PRICE_PLACEHOLDER":"Price",
+            "DESCRIPTION_PLACEHOLDER":"Description"
+        }        
+    },
     "ROD":{
         "ADD_TITLE":"Add rod to storeroom",
         "FORM":{
-            "NAME_PLACEHOLDER":"Name",
-            "DESCRIPTION_PLACEHOLDER":"Description",
-            "PRICE_PLACEHOLDER":"Price",
-            "WEIGHT_PLACEHOLDER":"Weight(g)",
             "SECTIONS_PLACEHOLDER":"Sections",
             "TESTOFBAIT_PLACEHOLDER":"Test of bait(g)",
             "TESTOFFISHINGLINE_PLACEHOLDER":"Test of fishing line(Lb)",
             "FORMATIONTYPE_PLACEHOLDER":"Formation type",
             "CATCHINGTYPE_PLACEHOLDER":"Catching type"
+        }
+    },
+    "REEL":{
+        "ADD_TITLE":"Add reel to storeroom"
+    },
+    "WOBBLER":{
+        "ADD_TITLE":"Add wobbler to storeroom",
+        "FORM":{
+            "LENGTH_PLACEHOLDER":"Length",
+            "DIVES_FROM_PLACEHOLDER":"Dives from",
+            "DIVES_TO_PLACEHOLDER":"Dives to",
+            "FLOAT_TYPE_PLACEHOLDER":"Float type"
+
         }
     },
     "DASHBOARD": {

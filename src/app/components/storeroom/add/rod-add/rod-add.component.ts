@@ -35,7 +35,6 @@ export class RodAddComponent implements OnInit {
     private loaderService: LoaderService,
     activateRoute: ActivatedRoute) {
       this.userApp = this.userService.getCurrentUser();
-debugger;
       this.createForm();
       this.id = activateRoute.snapshot.params.id;
       if (this.id) {

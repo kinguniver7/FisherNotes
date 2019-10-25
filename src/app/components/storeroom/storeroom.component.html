@@ -42,39 +42,53 @@
             <button class="mat-button-add" mat-button [routerLink]="[ '/storeroom/add-rod']">{{'GENERAL.ADD' | translate}} <fa-icon icon="plus" class="btn-fa-icon_r"></fa-icon></button>
         </mat-card-header>
         <mat-divider></mat-divider>
-        <div class="container">
+        <div class="container">            
             <div fxLayout="row" fxLayoutAlign="center center" class="storeroom-items">
+                <ngx-spinner [fullScreen]="false" name="spinnerRods" size="medium" type="ball-scale-multiple">
+                        <p style="font-size: 20px; color: white">Loading...</p>
+                </ngx-spinner>
                 <app-storeroom-item *ngFor="let rod of rods" class="storeroom-items__item" [thing]="rod"></app-storeroom-item>
             </div>            
         </div>
     </mat-card>
     <!--REELS-->
     <mat-card class="storeroom-card-items">
-        <mat-card-header>
-            <mat-card-title>{{'STOREROOM.REELS.TITLE'|translate}}</mat-card-title>
-            <mat-card-subtitle>{{'GENERAL.TOTAL_PRICE'|translate}}5000$</mat-card-subtitle>
+        <mat-card-header>            
+            <mat-card-title-group>
+                <mat-card-title>{{'STOREROOM.REELS.TITLE'|translate}}</mat-card-title>
+                <mat-card-subtitle>{{'GENERAL.TOTAL_PRICE'|translate}}5000$</mat-card-subtitle>
+            </mat-card-title-group>
+            <div fxFlex></div>
+            <button class="mat-button-add" mat-button [routerLink]="[ '/storeroom/add-reel']">{{'GENERAL.ADD' | translate}} <fa-icon icon="plus" class="btn-fa-icon_r"></fa-icon></button>
         </mat-card-header>
-        <div class="container">
+        <mat-divider></mat-divider>
+        <div class="container">            
             <div fxLayout="row" fxLayoutAlign="center center" class="storeroom-items">
-                <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
-                <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
-                <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
-                <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
-                <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
-                <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
-            </div>
+                <ngx-spinner [fullScreen]="false" name="spinnerReels" size="medium" type="ball-scale-multiple">
+                        <p style="font-size: 20px; color: white">Loading...</p>
+                </ngx-spinner>
+                <app-storeroom-item *ngFor="let reel of reels" class="storeroom-items__item" [thing]="reel"></app-storeroom-item>
+            </div>      
         </div>
     </mat-card>
     <!--WOBBLERS-->
     <mat-card class="storeroom-card-items">
-        <mat-card-header>
-            <mat-card-title>{{'STOREROOM.WOBBLERS.TITLE'|translate}}</mat-card-title>
-            <mat-card-subtitle>{{'GENERAL.TOTAL_PRICE'|translate}}12000$</mat-card-subtitle>
+        <mat-card-header>            
+            <mat-card-title-group>
+                <mat-card-title>{{'STOREROOM.WOBBLERS.TITLE'|translate}}</mat-card-title>
+                <mat-card-subtitle>{{'GENERAL.TOTAL_PRICE'|translate}}100$</mat-card-subtitle>
+            </mat-card-title-group>
+            <div fxFlex></div>
+            <button class="mat-button-add" mat-button [routerLink]="[ '/storeroom/add-wobbler']">{{'GENERAL.ADD' | translate}} <fa-icon icon="plus" class="btn-fa-icon_r"></fa-icon></button>
         </mat-card-header>
+        <mat-divider></mat-divider>        
         <div class="container">
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <app-storeroom-item class="storeroom-items__item"></app-storeroom-item>
-            </div>            
+            <div fxLayout="row" fxLayoutAlign="center center" class="storeroom-items">
+                <ngx-spinner [fullScreen]="false" name="spinnerWobblers" size="medium" type="ball-scale-multiple">
+                        <p style="font-size: 20px; color: white">Loading...</p>
+                </ngx-spinner>
+                <app-storeroom-item *ngFor="let wobbler of wobblers" class="storeroom-items__item" [thing]="wobbler"></app-storeroom-item>
+            </div>
         </div>
     </mat-card>
    
