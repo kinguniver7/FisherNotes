@@ -17,15 +17,15 @@
 
       
       <mat-nav-list class="sidenav-nav-list">
-        <a mat-list-item [routerLink]="[ '/home']" class="list-item sidenav-nav-list__item"><fa-icon icon="home" class="btn-fa-icon_r"></fa-icon>{{'GENERAL.HOME'|translate}}</a>
+        <a mat-list-item routerLinkActive="active" [routerLink]="[ '/home']" class="list-item sidenav-nav-list__item"><fa-icon icon="home" class="btn-fa-icon_r"></fa-icon>{{'GENERAL.HOME'|translate}}</a>
         <mat-divider></mat-divider>
-        <a mat-list-item [routerLink]="[ '/spin']">{{'SPIN_FISHING.MENU_ITEM'|translate}}</a>
+        <a mat-list-item routerLinkActive="active" [routerLink]="[ '/spin']" class="list-item sidenav-nav-list__item">{{'SPIN_FISHING.MENU_ITEM'|translate}}</a>
         <mat-divider></mat-divider>
-        <a mat-list-item [routerLink]="[ '/storeroom']">{{'STOREROOM.MENU_ITEM'|translate}}</a>
+        <a mat-list-item routerLinkActive="active" [routerLink]="[ '/storeroom']" class="list-item sidenav-nav-list__item"><fa-icon icon="box-open" class="btn-fa-icon_r"></fa-icon>{{'STOREROOM.MENU_ITEM'|translate}}</a>
         <mat-divider></mat-divider>
-        <a mat-list-item href="#"><fa-icon icon="cog" class="btn-fa-icon_r"></fa-icon>Settings</a>
+        <a mat-list-item routerLinkActive="active" href="#" class="list-item sidenav-nav-list__item"><fa-icon icon="cog" class="btn-fa-icon_r"></fa-icon>Settings</a>
         <mat-divider></mat-divider>
-        <a mat-list-item href="#"><fa-icon icon="info-circle" class="btn-fa-icon_r"></fa-icon>About</a>
+        <a mat-list-item routerLinkActive="active" href="#" class="list-item sidenav-nav-list__item"><fa-icon icon="info-circle" class="btn-fa-icon_r"></fa-icon>About</a>
       </mat-nav-list>
     </mat-sidenav>
     

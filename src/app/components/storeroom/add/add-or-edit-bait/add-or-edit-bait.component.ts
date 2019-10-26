@@ -1,21 +1,21 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserApp } from 'src/app/core/interfaces/user-app';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { ReelService } from 'src/app/services/reel.service';
 import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Reel } from 'src/app/core/interfaces/fishing_tackle/reel';
+import { BaitService } from 'src/app/services/bait.service';
+import { Bait } from 'src/app/core/interfaces/fishing_tackle/bait';
 import { ThingType } from 'src/app/core/enums/thing-type';
 
 @Component({
-  selector: 'app-add-reel',
-  templateUrl: './add-reel-or-edit.component.html',
-  styleUrls: ['./add-reel-or-edit.component.scss']
+  selector: 'app-add-or-edit-bait',
+  templateUrl: './add-or-edit-bait.component.html',
+  styleUrls: ['./add-or-edit-bait.component.scss']
 })
-export class AddReelOrEditComponent implements OnInit {
+export class AddOrEditBaitComponent implements OnInit {
 
   id: any;
   userApp: UserApp;
@@ -25,7 +25,7 @@ export class AddReelOrEditComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private translate: TranslateService,
-    private reelService: ReelService,
+    private baitService: BaitService,
     private snackBar: MatSnackBar,
     @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS) public data: any,
     private route: Router,
@@ -37,7 +37,7 @@ export class AddReelOrEditComponent implements OnInit {
       this.id = activateRoute.snapshot.params.id;
       if (this.id) {
         this.spinner.show();
-        this.reelService.getById(this.id).subscribe(rod => {
+        this.baitService.getById(this.id).subscribe(rod => {
           this.createForm(rod);
 
           this.spinner.hide();
@@ -50,14 +50,14 @@ export class AddReelOrEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  createForm(reel?: Reel) {
-    if (reel) {
+  createForm(bait?: Bait) {
+    if (bait) {
       this.mainForm = this.fb.group({
-        name: [reel.name, Validators.required],
-        description: [reel.description],
-        imageUrl: [reel.imageUrl],
-        price: [reel.price],
-        weightG: [reel.weightG],
+        name: [bait.name, Validators.required],
+        description: [bait.description],
+        imageUrl: [bait.imageUrl],
+        price: [bait.price],
+        weightG: [bait.weightG],
         // catchingType: [reel.catchingType.toString()]
       });
     } else {
@@ -75,20 +75,20 @@ export class AddReelOrEditComponent implements OnInit {
     if (this.mainForm.valid) {
       this.spinner.show();
       const formModel = this.mainForm.value;
-      const entityModel: Reel = {
+      const entityModel: Bait = {
         userId: this.userApp.id,
         name: formModel.name as string,
         description: formModel.description as string,
         imageUrl: formModel.imageUrl as string,
         price: formModel.price as number,
         weightG: formModel.weightG as number,
-        type: ThingType.Reel
+        type: ThingType.Bait
         // catchingType: +formModel.catchingType
       };
 
       if (this.id) {
         entityModel.id = this.id;
-        this.reelService.update(entityModel).then(() => {
+        this.baitService.update(entityModel).then(() => {
           this.spinner.hide();
           this.snackBar.open(
             this.translate.instant('MESSAGE.UPDATED'),
@@ -97,7 +97,7 @@ export class AddReelOrEditComponent implements OnInit {
           });
         }).catch(() => {this.spinner.hide(); });
       } else {
-        this.reelService.add(entityModel).then(() => {
+        this.baitService.add(entityModel).then(() => {
           this.spinner.hide();
           this.snackBar.open(
             this.translate.instant('MESSAGE.ADDED'),
@@ -113,5 +113,4 @@ export class AddReelOrEditComponent implements OnInit {
         this.translate.instant('ERROR.TITLE'));
     }
   }
-
 }

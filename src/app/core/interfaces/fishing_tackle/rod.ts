@@ -1,5 +1,4 @@
 import { Thing } from './thing';
-import { CatchingType } from '../catching-type';
 
 /**
  * Удилище
@@ -13,8 +12,6 @@ export interface Rod extends Thing {
     testOfFishingLineLb: number;
     // строй
     formationType: RodFormationType;
-    // вид рыбалки
-    catchingType: CatchingType;
 }
 /**
  * Строй удилища

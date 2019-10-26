@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SpinningService } from 'src/app/services/spinning.service';
 import { SelectItem } from 'src/app/core/interfaces/select-item';
 import { Thing } from 'src/app/core/interfaces/fishing_tackle/thing';
-import { CatchingType } from 'src/app/core/interfaces/catching-type';
+import { FishingType } from 'src/app/core/interfaces/catching-type';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, zip, forkJoin } from 'rxjs';
 import { Rod } from 'src/app/core/interfaces/fishing_tackle/rod';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { RodService } from 'src/app/services/rod.service';
@@ -17,6 +17,13 @@ import { WobblerService } from 'src/app/services/wobbler.service';
 import { Wobbler } from 'src/app/core/interfaces/fishing_tackle/spinning/wobbler';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddBaitComponent } from './add/dialog-add-bait/dialog-add-bait.component';
+import { Bait } from 'src/app/core/interfaces/fishing_tackle/bait';
+import { BaitService } from 'src/app/services/bait.service';
+import { ThingType } from 'src/app/core/enums/thing-type';
+import { TranslateService } from '@ngx-translate/core';
+
+import {MatChipInputEvent} from '@angular/material/chips';
+
 
 @Component({
   selector: 'app-storeroom',
@@ -24,36 +31,17 @@ import { DialogAddBaitComponent } from './add/dialog-add-bait/dialog-add-bait.co
   styleUrls: ['./storeroom.component.scss']
 })
 export class StoreroomComponent implements OnInit {
-  rods: Rod[];
-  reels: Reel[];
-  wobblers: Wobbler[];
-  data: any;
-  // SPINNERS
-  ID_SPINNER_RODS = 'spinnerRods';
-  ID_SPINNER_REELS = 'spinnerReels';
-  ID_SPINNER_WOBBLERS = 'spinnerWobblers';
-
-  userApp: UserApp;
-
-  filterPanelOpenState = false;
-  fltGroups: SelectItem[] = [
-    {value: '-1', text: 'All'},
-    {value: 'rod', text: 'Rod'},
-    {value: 'reel', text: 'Reel'},
-    {value: 'wobbler', text: 'Wobbler'}
-  ];
-  fltGroupsSelected = this.fltGroups[0].value;
-
-  paramCatchingType: Observable<CatchingType>;
-  fltCatchingType: CatchingType;
-
-  allThinks: Thing[] = [];
+  get fltGroupsSelectedText() {
+    return this.fltGroups.find(c => c.value === this.fltGroupsSelected).text;
+  }
   constructor(
     userService: UserService,
+    private translate: TranslateService,
 
     public rodService: RodService,
     public reelService: ReelService,
     public wobblerService: WobblerService,
+    public baitService: BaitService,
 
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
@@ -62,13 +50,39 @@ export class StoreroomComponent implements OnInit {
       this.userApp = userService.getCurrentUser();
 
       this.route.queryParams.subscribe(params => {
-        if (params.catchingType && params.catchingType as CatchingType) {
+        if (params.catchingType && params.catchingType as FishingType) {
           this.fltCatchingType = params.catchingType;
         } else {
-          this.fltCatchingType = CatchingType.All as number;
+          this.fltCatchingType = FishingType.All as number;
         }
       });
    }
+  rods: Rod[];
+  reels: Reel[];
+  //wobblers: Wobbler[];
+  baits: Thing[];
+  data: any;
+  // SPINNERS
+  ID_SPINNER_RODS = 'spinnerRods';
+  ID_SPINNER_REELS = 'spinnerReels';
+  ID_SPINNER_BAITS = 'spinnerBaits';
+
+  userApp: UserApp;
+
+  filterPanelOpenState = false;
+  fltGroups: SelectItem[] = [
+    {value: 'all', text: 'All'},
+    {value: ThingType.Rod.toString(), text: this.translate.instant('ROD.TITLE')},
+    {value: ThingType.Reel.toString(), text: this.translate.instant('REEL.TITLE')},
+    {value: ThingType.Bait.toString(), text: this.translate.instant('BAIT.TITLE')}
+  ];
+  fltGroupsSelected = this.fltGroups[0].value;
+
+  paramCatchingType: Observable<FishingType>;
+  fltCatchingType: FishingType;
+  thingType = ThingType;
+
+  allThinks: Thing[] = [];
 
   ngOnInit() {
     this.runSpinners();
@@ -88,23 +102,32 @@ export class StoreroomComponent implements OnInit {
       this.spinner.hide(this.ID_SPINNER_REELS);
     });
     // load wobblers
-    this.wobblerService.getAll(this.userApp.id).subscribe(data => {
-      this.wobblers = data;
-      this.spinner.hide(this.ID_SPINNER_WOBBLERS);
-    }, () => {
-      this.spinner.hide(this.ID_SPINNER_WOBBLERS);
+    zip(this.wobblerService.getAll(this.userApp.id), this.baitService.getAll(this.userApp.id)).subscribe((data) => {
+      data.forEach(el => {
+        const item = el as undefined as Thing[];
+        if (this.baits === null || !this.baits) {
+          this.baits = item;
+        } else {
+          this.baits = this.baits.concat(item);
+        }
+      });
+      this.spinner.hide(this.ID_SPINNER_BAITS);
     });
   }
   runSpinners() {
     this.spinner.show(this.ID_SPINNER_RODS).finally(() => {
       this.spinner.show(this.ID_SPINNER_REELS);
-      this.spinner.show(this.ID_SPINNER_WOBBLERS);
+      this.spinner.show(this.ID_SPINNER_BAITS);
     });
   }
 
-  openDialogAddBait(){
+  openDialogAddBait() {
     this.dialog.open(DialogAddBaitComponent, {
       width: '240px'
     });
+  }
+  // FILTERS EVENTS
+  cleareGroup(): void {
+    this.fltGroupsSelected = this.fltGroups[0].value;
   }
 }

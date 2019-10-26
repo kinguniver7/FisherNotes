@@ -1,5 +1,6 @@
 export enum ThingType {
     Rod,
     Reel,
-    Wobbler
+    Wobbler,
+    Bait
 }

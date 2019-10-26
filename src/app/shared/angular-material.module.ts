@@ -86,7 +86,7 @@ import {
     MatTabsModule
  ],
  providers: [
-  {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 3000}}
+  {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 300}}
 ],
 })
 export class AngularMaterialModule { }

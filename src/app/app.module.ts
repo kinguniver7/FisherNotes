@@ -34,14 +34,15 @@ import { StoreroomItemComponent } from './components/storeroom/storeroom-item/st
 import { RodDetailDialogComponent } from './components/storeroom/detail/rod-detail-dialog/rod-detail-dialog.component';
 import { ReelDetailDialogComponent } from './components/storeroom/detail/reel-detail-dialog/reel-detail-dialog.component';
 import { WobblerDetailDialogComponent } from './components/storeroom/detail/wobbler-detail-dialog/wobbler-detail-dialog.component';
-import { AddWobblerOrEditComponent } from './components/storeroom/add/add-wobbler/add-wobbler-or-edit.component';
-import { AddReelOrEditComponent } from './components/storeroom/add/add-reel/add-reel-or-edit.component';
-import { AddRodComponent } from './components/storeroom/add/add-rod/add-rod.component';
+import { AddOrEditWobblerComponent } from './components/storeroom/add/add-or-edit-wobbler/add-or-edit-wobbler.component';
+import { AddOrEditReelComponent } from './components/storeroom/add/add-or-edit-reel/add-or-edit-reel.component';
+import { AddOrEditRodComponent } from './components/storeroom/add/add-or-edit-rod/add-or-edit-rod.component';
 import { EnumKeysPipe } from './pipes/enum-keys.pipe';
 import { LoaderService } from './shared/services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 import { DialogAddBaitComponent } from './components/storeroom/add/dialog-add-bait/dialog-add-bait.component';
+import { AddOrEditBaitComponent } from './components/storeroom/add/add-or-edit-bait/add-or-edit-bait.component';
 
 @NgModule({
   declarations: [
@@ -59,12 +60,13 @@ import { DialogAddBaitComponent } from './components/storeroom/add/dialog-add-ba
     WobblerDetailDialogComponent,
     ConfirmDialogComponent,
 
-    AddWobblerOrEditComponent,
-    AddReelOrEditComponent,
-    AddRodComponent,
+    AddOrEditWobblerComponent,
+    AddOrEditReelComponent,
+    AddOrEditRodComponent,
     EnumKeysPipe,
     LoaderComponent,
-    DialogAddBaitComponent
+    DialogAddBaitComponent,
+    AddOrEditBaitComponent
   ],
   imports: [
     BrowserModule,

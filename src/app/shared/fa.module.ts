@@ -19,6 +19,9 @@ import {
   faLink,
   faEdit,
   faEye,
+  faTimes,
+  faTimesCircle,
+  faBoxOpen,
 
   fas
  } from '@fortawesome/free-solid-svg-icons';
@@ -53,6 +56,9 @@ export class FaModule {
     faCheck,
     faLink,
     faEdit,
-    faEye);
+    faEye,
+    faTimes,
+    faTimesCircle,
+    faBoxOpen);
   }
 }

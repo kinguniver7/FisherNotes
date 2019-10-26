@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CatchingType } from 'src/app/core/interfaces/catching-type';
+import { FishingType } from 'src/app/core/interfaces/catching-type';
 import { Rod, RodFormationType } from 'src/app/core/interfaces/fishing_tackle/rod';
 
 @Component({
@@ -9,7 +9,7 @@ import { Rod, RodFormationType } from 'src/app/core/interfaces/fishing_tackle/ro
   styleUrls: ['./rod-detail-dialog.component.scss']
 })
 export class RodDetailDialogComponent implements OnInit {
-  catchingType: any = CatchingType[this.data.catchingType];
+  catchingType: any = FishingType[this.data.fishingType];
   formationType: any = RodFormationType[this.data.formationType];
   constructor(@Inject(MAT_DIALOG_DATA) public data: Rod) {  }
 

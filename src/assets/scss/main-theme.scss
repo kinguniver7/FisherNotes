@@ -147,3 +147,10 @@ $fox-theme: mat-light-theme($fox-palette-primary, $fox-palette-accent);
 .mat-form-field{
   padding: 5px 10px 0px 10px;
 }
+
+.sidenav-nav-list__item.active, .sidenav-nav-list__item.active:focus{
+  background-color: mat-color($fox-primary, 50);
+}
+.mat-thing-description{
+  width: 100%;
+}

@@ -21,6 +21,7 @@ import { WobblerService } from 'src/app/services/wobbler.service';
 export class StoreroomItemComponent implements OnInit {
   @Input() thing: any = {};
   dialogWidth: '640px';
+  type = ThingType;
   constructor(public dialog: MatDialog,
               private rodService: RodService,
               private reelService: ReelService,

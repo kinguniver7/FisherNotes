@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import { CatchingType } from '../core/interfaces/catching-type';
+import { FishingType } from '../core/interfaces/catching-type';
 import { Rod } from '../core/interfaces/fishing_tackle/rod';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class RodService {
    * Получить все удилища по типу ловли
    * @param userId - id пользователя
    */
-  public getAllRods(userId: string, type: CatchingType = CatchingType.All as number): Observable<Rod[]> {
+  public getAllRods(userId: string, type: FishingType = FishingType.All as number): Observable<Rod[]> {
     return this.rodsCollection.valueChanges({idField: 'id'}).pipe(
       map(items => items.filter(item => item.userId === userId)));
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ThingType } from 'src/app/core/enums/thing-type';
-import { CatchingType } from 'src/app/core/interfaces/catching-type';
+import { FishingType } from 'src/app/core/interfaces/catching-type';
 import { RodService } from 'src/app/services/rod.service';
 import { Rod, RodFormationType } from 'src/app/core/interfaces/fishing_tackle/rod';
 import { MatSnackBar, MAT_SNACK_BAR_DATA, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
@@ -12,15 +12,15 @@ import { UserService } from 'src/app/services/user.service';
 import { UserApp } from 'src/app/core/interfaces/user-app';
 
 @Component({
-  selector: 'app-add-rod',
-  templateUrl: './add-rod.component.html',
-  styleUrls: ['./add-rod.component.scss']
+  selector: 'app-add-or-edit-rod',
+  templateUrl: './add-or-edit-rod.component.html',
+  styleUrls: ['./add-or-edit-rod.component.scss']
 })
-export class AddRodComponent implements OnInit {
+export class AddOrEditRodComponent implements OnInit {
   // ID for edit thing
   id: any;
   userApp: UserApp;
-  catchingTypes = CatchingType;
+  catchingTypes = FishingType;
   formationType = RodFormationType;
   rodForm: FormGroup;
 

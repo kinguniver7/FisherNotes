@@ -1,17 +1,26 @@
 import { AppImage } from '../app-image';
 import { ThingType } from '../../enums/thing-type';
+import { FishingType } from '../catching-type';
 /**
  * Вещь
  */
 export interface Thing {
     id?: string;
+    // The user Id
     userId: string;
+    // The name of the thing
     name: string;
-    description: string;
-    imageUrl: string;
-    price: number;
-    // вес
-    weightG: number;
+    // The description of the thing
+    description?: string;
+    // Image URL
+    imageUrl?: string;
+    // Price of the thing
+    price?: number;
+    // Weight
+    weightG?: number;
+    // Type of the thing (Wobbler, Rod)
     type: ThingType;
+    // Type of fishing
+    fishingType?: FishingType;
 }
 

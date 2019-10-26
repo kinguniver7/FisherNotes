@@ -55,6 +55,7 @@
         }        
     },
     "ROD":{
+        "TITLE":"Rod",
         "ADD_TITLE":"Add rod to storeroom",
         "FORM":{
             "SECTIONS_PLACEHOLDER":"Sections",
@@ -65,6 +66,7 @@
         }
     },
     "REEL":{
+        "TITLE":"Reel",
         "ADD_TITLE":"Add reel to storeroom"
     },
     "WOBBLER":{

@@ -1,9 +1,9 @@
 /**
  * Вид рыбалки
  */
-export enum CatchingType {
+export enum FishingType {
     All,
-    Spining,
+    Spinning,
     Telescopic,
     Carp,
     Feeder

@@ -5,9 +5,10 @@
   </mat-card-content>
   <mat-card-actions fxLayout="row" >
     <button mat-icon-button  fxFlex="35" (click)="openDetailsDialog()"><fa-icon icon="eye"></fa-icon></button>
-    <button *ngIf="thing.type === 0" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-rod', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
-    <button *ngIf="thing.type === 1" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-reel', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
-    <button *ngIf="thing.type === 2" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-wobbler', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
+    <button *ngIf="thing.type === type.Rod" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-rod', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
+    <button *ngIf="thing.type === type.Reel" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-reel', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
+    <button *ngIf="thing.type === type.Wobbler" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-wobbler', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
+    <button *ngIf="thing.type === type.Bait" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-bait', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
     <button mat-icon-button fxFlex="35" (click)="openRemoveItemDialog()"><fa-icon icon="trash"></fa-icon></button>            
   </mat-card-actions>
 </mat-card>

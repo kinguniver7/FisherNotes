@@ -3,17 +3,19 @@
     <mat-accordion>
         <mat-expansion-panel [expanded]='true'>
             <mat-expansion-panel-header>
-                <mat-panel-title>
+                <mat-panel-title fxFlex="5">
                     {{'GENERAL.FILTER.TITLE'|translate}}
                 </mat-panel-title>
                 <mat-panel-description>
-                    selected: group
+                    <mat-chip-list>
+                        <mat-chip (click)="cleareGroup()"><mat-label>{{'STOREROOM.FILTERS.GROUP'|translate}}: </mat-label>{{fltGroupsSelectedText}}<fa-icon icon="times-circle" class="btn-fa-icon_l"></fa-icon></mat-chip>
+                    </mat-chip-list>
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="filter-content">
                 <div fxLayout="row">
                     <!--Group filter-->
-                    <div fxLayout="column">
+                    <div fxLayout="column">                        
                         <div fxLayout = "row">
                             <mat-form-field>
                                 <mat-label>{{'STOREROOM.FILTERS.GROUP'|translate}}</mat-label>
@@ -32,7 +34,7 @@
         </mat-expansion-panel>
     </mat-accordion>
     <!--RODS-->
-    <mat-card class="storeroom-card-items">
+    <mat-card class="storeroom-card-items" *ngIf="fltGroupsSelected === 'all' || fltGroupsSelected === thingType.Rod.toString()">
         <mat-card-header>            
             <mat-card-title-group>
                 <mat-card-title>{{'STOREROOM.RODS.TITLE'|translate}}</mat-card-title>
@@ -52,7 +54,7 @@
         </div>
     </mat-card>
     <!--REELS-->
-    <mat-card class="storeroom-card-items">
+    <mat-card class="storeroom-card-items" *ngIf="fltGroupsSelected === 'all' || fltGroupsSelected === thingType.Reel.toString()">
         <mat-card-header>            
             <mat-card-title-group>
                 <mat-card-title>{{'STOREROOM.REELS.TITLE'|translate}}</mat-card-title>
@@ -72,7 +74,7 @@
         </div>
     </mat-card>
     <!--BAITS-->
-    <mat-card class="storeroom-card-items">
+    <mat-card class="storeroom-card-items" *ngIf="fltGroupsSelected === 'all' || fltGroupsSelected === thingType.Bait.toString()">
         <mat-card-header>            
             <mat-card-title-group>
                 <mat-card-title>{{'STOREROOM.BAITS.TITLE'|translate}}</mat-card-title>
@@ -84,10 +86,10 @@
         <mat-divider></mat-divider>        
         <div class="container">
             <div fxLayout="row" fxLayoutAlign="center center" class="storeroom-items">
-                <ngx-spinner [fullScreen]="false" name="spinnerWobblers" size="medium" type="ball-scale-multiple">
+                <ngx-spinner [fullScreen]="false" name="spinnerBaits" size="medium" type="ball-scale-multiple">
                         <p style="font-size: 20px; color: white">Loading...</p>
                 </ngx-spinner>
-                <app-storeroom-item *ngFor="let wobbler of wobblers" class="storeroom-items__item" [thing]="wobbler"></app-storeroom-item>
+                <app-storeroom-item *ngFor="let bait of baits" class="storeroom-items__item" [thing]="bait"></app-storeroom-item>
             </div>
         </div>
     </mat-card>
