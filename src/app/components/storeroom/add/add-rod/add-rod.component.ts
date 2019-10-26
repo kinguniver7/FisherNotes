@@ -12,11 +12,11 @@ import { UserService } from 'src/app/services/user.service';
 import { UserApp } from 'src/app/core/interfaces/user-app';
 
 @Component({
-  selector: 'app-rod-add',
-  templateUrl: './rod-add.component.html',
-  styleUrls: ['./rod-add.component.scss']
+  selector: 'app-add-rod',
+  templateUrl: './add-rod.component.html',
+  styleUrls: ['./add-rod.component.scss']
 })
-export class RodAddComponent implements OnInit {
+export class AddRodComponent implements OnInit {
   // ID for edit thing
   id: any;
   userApp: UserApp;

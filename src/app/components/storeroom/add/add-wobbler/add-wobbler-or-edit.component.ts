@@ -1,31 +1,34 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserApp } from 'src/app/core/interfaces/user-app';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { ReelService } from 'src/app/services/reel.service';
+import { WobblerService } from 'src/app/services/wobbler.service';
 import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Reel } from 'src/app/core/interfaces/fishing_tackle/reel';
+import { Wobbler, WobblerFloatType } from 'src/app/core/interfaces/fishing_tackle/spinning/wobbler';
 import { ThingType } from 'src/app/core/enums/thing-type';
+import { LengthType } from 'src/app/core/enums/length-type';
 
 @Component({
-  selector: 'app-reel-add',
-  templateUrl: './reel-add-or-edit.component.html',
-  styleUrls: ['./reel-add-or-edit.component.scss']
+  selector: 'app-add-wobbler-or-edit',
+  templateUrl: './add-wobbler-or-edit.component.html',
+  styleUrls: ['./add-wobbler-or-edit.component.scss']
 })
-export class ReelAddOrEditComponent implements OnInit {
+export class AddWobblerOrEditComponent implements OnInit {
 
   id: any;
   userApp: UserApp;
   mainForm: FormGroup;
 
+  wobblerFloatType = WobblerFloatType;
+
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
     private translate: TranslateService,
-    private reelService: ReelService,
+    private wobblerService: WobblerService,
     private snackBar: MatSnackBar,
     @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS) public data: any,
     private route: Router,
@@ -37,7 +40,7 @@ export class ReelAddOrEditComponent implements OnInit {
       this.id = activateRoute.snapshot.params.id;
       if (this.id) {
         this.spinner.show();
-        this.reelService.getById(this.id).subscribe(rod => {
+        this.wobblerService.getById(this.id).subscribe(rod => {
           this.createForm(rod);
 
           this.spinner.hide();
@@ -50,14 +53,19 @@ export class ReelAddOrEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  createForm(reel?: Reel) {
-    if (reel) {
+  createForm(wobbler?: Wobbler) {
+    if (wobbler) {
       this.mainForm = this.fb.group({
-        name: [reel.name, Validators.required],
-        description: [reel.description],
-        imageUrl: [reel.imageUrl],
-        price: [reel.price],
-        weightG: [reel.weightG],
+        name: [wobbler.name, Validators.required],
+        description: [wobbler.description],
+        imageUrl: [wobbler.imageUrl],
+        price: [wobbler.price],
+        weightG: [wobbler.weightG],
+
+        length: [wobbler.length],
+        divesFrom: [wobbler.divesFrom],
+        divesTo: [wobbler.divesTo],
+        floatType: [wobbler.floatType.toString()]
         // catchingType: [reel.catchingType.toString()]
       });
     } else {
@@ -66,7 +74,12 @@ export class ReelAddOrEditComponent implements OnInit {
         description: [''],
         imageUrl: [''],
         price: [''],
-        weightG: ['']
+        weightG: [''],
+
+        length: [''],
+        divesFrom: [''],
+        divesTo: [''],
+        floatType: ['']
       });
     }
   }
@@ -75,20 +88,25 @@ export class ReelAddOrEditComponent implements OnInit {
     if (this.mainForm.valid) {
       this.spinner.show();
       const formModel = this.mainForm.value;
-      const entityModel: Reel = {
+      const entityModel: Wobbler = {
         userId: this.userApp.id,
         name: formModel.name as string,
         description: formModel.description as string,
         imageUrl: formModel.imageUrl as string,
         price: formModel.price as number,
         weightG: formModel.weightG as number,
-        type: ThingType.Reel
+        type: ThingType.Wobbler,
+        length: formModel.length as number,
+        lengthType: LengthType.mm,
+        divesFrom: formModel.divesFrom as number,
+        divesTo: formModel.divesTo as number,
+        floatType: +formModel.floatType
         // catchingType: +formModel.catchingType
       };
 
       if (this.id) {
         entityModel.id = this.id;
-        this.reelService.update(entityModel).then(() => {
+        this.wobblerService.update(entityModel).then(() => {
           this.spinner.hide();
           this.snackBar.open(
             this.translate.instant('MESSAGE.UPDATED'),
@@ -97,7 +115,7 @@ export class ReelAddOrEditComponent implements OnInit {
           });
         }).catch(() => {this.spinner.hide(); });
       } else {
-        this.reelService.add(entityModel).then(() => {
+        this.wobblerService.add(entityModel).then(() => {
           this.spinner.hide();
           this.snackBar.open(
             this.translate.instant('MESSAGE.ADDED'),

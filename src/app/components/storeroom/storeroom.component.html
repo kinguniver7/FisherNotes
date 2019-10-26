@@ -71,15 +71,15 @@
             </div>      
         </div>
     </mat-card>
-    <!--WOBBLERS-->
+    <!--BAITS-->
     <mat-card class="storeroom-card-items">
         <mat-card-header>            
             <mat-card-title-group>
-                <mat-card-title>{{'STOREROOM.WOBBLERS.TITLE'|translate}}</mat-card-title>
+                <mat-card-title>{{'STOREROOM.BAITS.TITLE'|translate}}</mat-card-title>
                 <mat-card-subtitle>{{'GENERAL.TOTAL_PRICE'|translate}}100$</mat-card-subtitle>
             </mat-card-title-group>
             <div fxFlex></div>
-            <button class="mat-button-add" mat-button [routerLink]="[ '/storeroom/add-wobbler']">{{'GENERAL.ADD' | translate}} <fa-icon icon="plus" class="btn-fa-icon_r"></fa-icon></button>
+            <button class="mat-button-add" mat-button (click)="openDialogAddBait()">{{'GENERAL.ADD' | translate}} <fa-icon icon="plus" class="btn-fa-icon_r"></fa-icon></button>
         </mat-card-header>
         <mat-divider></mat-divider>        
         <div class="container">

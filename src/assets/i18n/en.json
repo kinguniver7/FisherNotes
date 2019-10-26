@@ -40,8 +40,11 @@
         },
         "WOBBLERS":{
             "TITLE":"Wobblers"            
+        },
+        "BAITS":{
+            "TITLE":"Baits",
+            "DIALOG_ADD_BAIT":"Pick your bait"
         }
-
     },
     "THING":{
         "FORM":{
@@ -65,6 +68,7 @@
         "ADD_TITLE":"Add reel to storeroom"
     },
     "WOBBLER":{
+        "TITLE":"Wobbler",
         "ADD_TITLE":"Add wobbler to storeroom",
         "FORM":{
             "LENGTH_PLACEHOLDER":"Length",
@@ -73,6 +77,9 @@
             "FLOAT_TYPE_PLACEHOLDER":"Float type"
 
         }
+    },
+    "BAIT":{
+        "TITLE":"Bait"
     },
     "DASHBOARD": {
 

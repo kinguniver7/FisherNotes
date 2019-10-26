@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Wobbler } from '../core/interfaces/fishing_tackle/spining/wobbler';
+import { Wobbler } from '../core/interfaces/fishing_tackle/spinning/wobbler';
 import { map } from 'rxjs/operators';
 
 @Injectable({

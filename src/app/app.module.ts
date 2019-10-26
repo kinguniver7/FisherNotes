@@ -34,13 +34,14 @@ import { StoreroomItemComponent } from './components/storeroom/storeroom-item/st
 import { RodDetailDialogComponent } from './components/storeroom/detail/rod-detail-dialog/rod-detail-dialog.component';
 import { ReelDetailDialogComponent } from './components/storeroom/detail/reel-detail-dialog/reel-detail-dialog.component';
 import { WobblerDetailDialogComponent } from './components/storeroom/detail/wobbler-detail-dialog/wobbler-detail-dialog.component';
-import { WobblerAddOrEditComponent } from './components/storeroom/add/wobbler-add/wobbler-add-or-edit.component';
-import { ReelAddOrEditComponent } from './components/storeroom/add/reel-add/reel-add-or-edit.component';
-import { RodAddComponent } from './components/storeroom/add/rod-add/rod-add.component';
+import { AddWobblerOrEditComponent } from './components/storeroom/add/add-wobbler/add-wobbler-or-edit.component';
+import { AddReelOrEditComponent } from './components/storeroom/add/add-reel/add-reel-or-edit.component';
+import { AddRodComponent } from './components/storeroom/add/add-rod/add-rod.component';
 import { EnumKeysPipe } from './pipes/enum-keys.pipe';
 import { LoaderService } from './shared/services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
+import { DialogAddBaitComponent } from './components/storeroom/add/dialog-add-bait/dialog-add-bait.component';
 
 @NgModule({
   declarations: [
@@ -58,11 +59,12 @@ import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confi
     WobblerDetailDialogComponent,
     ConfirmDialogComponent,
 
-    WobblerAddOrEditComponent,
-    ReelAddOrEditComponent,
-    RodAddComponent,
+    AddWobblerOrEditComponent,
+    AddReelOrEditComponent,
+    AddRodComponent,
     EnumKeysPipe,
-    LoaderComponent
+    LoaderComponent,
+    DialogAddBaitComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,8 @@ import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confi
     RodDetailDialogComponent,
     ReelDetailDialogComponent,
     WobblerDetailDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    DialogAddBaitComponent
   ],
   providers: [AngularFireAuthGuard, LoaderService, { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],
   bootstrap: [AppComponent],

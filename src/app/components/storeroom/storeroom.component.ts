@@ -14,7 +14,9 @@ import { Reel } from 'src/app/core/interfaces/fishing_tackle/reel';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ReelService } from 'src/app/services/reel.service';
 import { WobblerService } from 'src/app/services/wobbler.service';
-import { Wobbler } from 'src/app/core/interfaces/fishing_tackle/spining/wobbler';
+import { Wobbler } from 'src/app/core/interfaces/fishing_tackle/spinning/wobbler';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddBaitComponent } from './add/dialog-add-bait/dialog-add-bait.component';
 
 @Component({
   selector: 'app-storeroom',
@@ -54,7 +56,8 @@ export class StoreroomComponent implements OnInit {
     public wobblerService: WobblerService,
 
     private route: ActivatedRoute,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    public dialog: MatDialog) {
 
       this.userApp = userService.getCurrentUser();
 
@@ -96,6 +99,12 @@ export class StoreroomComponent implements OnInit {
     this.spinner.show(this.ID_SPINNER_RODS).finally(() => {
       this.spinner.show(this.ID_SPINNER_REELS);
       this.spinner.show(this.ID_SPINNER_WOBBLERS);
+    });
+  }
+
+  openDialogAddBait(){
+    this.dialog.open(DialogAddBaitComponent, {
+      width: '240px'
     });
   }
 }

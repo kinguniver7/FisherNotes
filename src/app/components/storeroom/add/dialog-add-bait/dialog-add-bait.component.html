@@ -1,0 +1,12 @@
+<label>{{'STOREROOM.BAITS.DIALOG_ADD_BAIT'| translate}}</label>
+<mat-radio-group
+  class="radio-group"
+  [(ngModel)]="favoriteBait">
+  <mat-radio-button class="radio-button" *ngFor="let type of typesBait" [value]="type.value">
+    {{type.text}}
+  </mat-radio-button>
+</mat-radio-group>
+
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close color="primary" (click)="navigateToAddBait()">{{'GENERAL.OK'| translate}}</button>   
+</mat-dialog-actions>
