@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -14,6 +14,7 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
+import { MatSidenav } from '@angular/material';
 
 
 @Component({
@@ -22,6 +23,8 @@ import {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+  
+
   isAuthenticated: any = false;
   loading = false;
 
@@ -29,6 +32,7 @@ export class AppComponent implements OnInit{
   @ViewChild('name', {static: false}) name: ElementRef;
   @ViewChild('email', {static: false}) email: ElementRef;
 
+  @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -68,6 +72,7 @@ export class AppComponent implements OnInit{
 
   }
 
+
   ngOnInit() {
     this.user.subscribe(data => {
       if (data && data.isAnonymous !== null) {
@@ -85,6 +90,12 @@ export class AppComponent implements OnInit{
       this.router.navigate(['sign-in']);
 
     });
+  }
+
+  closeSideNav() {
+    if (this.sidenav.mode === 'over') {
+      this.sidenav.close();
+    }
   }
 
 }
