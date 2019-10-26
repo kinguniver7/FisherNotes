@@ -20,7 +20,7 @@ export class AddOrEditRodComponent implements OnInit {
   // ID for edit thing
   id: any;
   userApp: UserApp;
-  catchingTypes = FishingType;
+  fishingTypes = FishingType;
   formationType = RodFormationType;
   rodForm: FormGroup;
 
@@ -60,8 +60,8 @@ export class AddOrEditRodComponent implements OnInit {
         sections: [rod.sections],
         testOfBaitG: [rod.testOfBaitG],
         testOfFishingLineLb: [rod.testOfFishingLineLb],
-        formationType: [rod.formationType.toString()],
-        catchingType: [rod.catchingType.toString()]
+        formationType: [rod.formationType ? rod.formationType.toString() : ''],
+        fishingType: [rod.fishingType ? rod.fishingType.toString() : '']
       });
     } else {
       this.rodForm = this.fb.group({
@@ -74,7 +74,7 @@ export class AddOrEditRodComponent implements OnInit {
         testOfBaitG: [''],
         testOfFishingLineLb: [''],
         formationType: [''],
-        catchingType: ['']
+        fishingType: ['']
       });
     }
   }
@@ -97,7 +97,7 @@ export class AddOrEditRodComponent implements OnInit {
         testOfBaitG: formModel.testOfBaitG as number,
         testOfFishingLineLb: formModel.testOfFishingLineLb as number,
         formationType: +formModel.formationType,
-        catchingType: +formModel.catchingType
+        fishingType: +formModel.fishingType
       };
 
       if (this.id) {

@@ -62,7 +62,7 @@
             "TESTOFBAIT_PLACEHOLDER":"Test of bait(g)",
             "TESTOFFISHINGLINE_PLACEHOLDER":"Test of fishing line(Lb)",
             "FORMATIONTYPE_PLACEHOLDER":"Formation type",
-            "CATCHINGTYPE_PLACEHOLDER":"Catching type"
+            "FISHINGTYPE_PLACEHOLDER":"Catching type"
         }
     },
     "REEL":{
