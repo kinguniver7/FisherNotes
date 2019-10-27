@@ -11,7 +11,13 @@
                         <mat-form-field>
                             <input formControlName="name" matInput placeholder="*{{'THING.FORM.NAME_PLACEHOLDER'|translate}}">
                             <mat-error *ngIf="mainForm.controls['name'].errors?.required && mainForm.controls['name'].touched">Name is <strong>required</strong></mat-error>
-                        </mat-form-field>                                                            
+                        </mat-form-field>
+                        
+                        <mat-form-field>
+                            <mat-select formControlName="fishingType" placeholder="{{'THING.FORM.FISHINGTYPE_PLACEHOLDER'|translate}}">
+                            <mat-option *ngFor="let type of fishingTypes | enumKeys" [value]="type.key">{{type.value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
                                 
                         <mat-form-field>
                             <input formControlName="imageUrl" matInput type="url" placeholder="http://...">

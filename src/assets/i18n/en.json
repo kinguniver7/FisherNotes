@@ -51,7 +51,8 @@
             "NAME_PLACEHOLDER":"Name",
             "WEIGHT_PLACEHOLDER":"Weight(g)",
             "PRICE_PLACEHOLDER":"Price",
-            "DESCRIPTION_PLACEHOLDER":"Description"
+            "DESCRIPTION_PLACEHOLDER":"Description",
+            "FISHINGTYPE_PLACEHOLDER":"Fishing type"
         }        
     },
     "ROD":{
@@ -61,8 +62,7 @@
             "SECTIONS_PLACEHOLDER":"Sections",
             "TESTOFBAIT_PLACEHOLDER":"Test of bait(g)",
             "TESTOFFISHINGLINE_PLACEHOLDER":"Test of fishing line(Lb)",
-            "FORMATIONTYPE_PLACEHOLDER":"Formation type",
-            "FISHINGTYPE_PLACEHOLDER":"Catching type"
+            "FORMATIONTYPE_PLACEHOLDER":"Formation type"
         }
     },
     "REEL":{

@@ -9,6 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaitService } from 'src/app/services/bait.service';
 import { Bait } from 'src/app/core/interfaces/fishing_tackle/bait';
 import { ThingType } from 'src/app/core/enums/thing-type';
+import { FishingType } from 'src/app/core/interfaces/catching-type';
 
 @Component({
   selector: 'app-add-or-edit-bait',
@@ -20,6 +21,8 @@ export class AddOrEditBaitComponent implements OnInit {
   id: any;
   userApp: UserApp;
   mainForm: FormGroup;
+
+  fishingTypes = FishingType;
 
   constructor(
     private userService: UserService,
@@ -58,7 +61,7 @@ export class AddOrEditBaitComponent implements OnInit {
         imageUrl: [bait.imageUrl],
         price: [bait.price],
         weightG: [bait.weightG],
-        // catchingType: [reel.catchingType.toString()]
+        fishingType: [bait.fishingType ? bait.fishingType.toString() : '']
       });
     } else {
       this.mainForm = this.fb.group({
@@ -66,7 +69,8 @@ export class AddOrEditBaitComponent implements OnInit {
         description: [''],
         imageUrl: [''],
         price: [''],
-        weightG: ['']
+        weightG: [''],
+        fishingType: ['']
       });
     }
   }
@@ -82,8 +86,8 @@ export class AddOrEditBaitComponent implements OnInit {
         imageUrl: formModel.imageUrl as string,
         price: formModel.price as number,
         weightG: formModel.weightG as number,
-        type: ThingType.Bait
-        // catchingType: +formModel.catchingType
+        type: ThingType.Bait,
+        fishingType: +formModel.fishingType
       };
 
       if (this.id) {
