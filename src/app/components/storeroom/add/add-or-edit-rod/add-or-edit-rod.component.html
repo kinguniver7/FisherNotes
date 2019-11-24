@@ -4,26 +4,23 @@
                 <mat-card-title>{{'ROD.ADD_TITLE'|translate}}</mat-card-title>
         </mat-card-header>   
         
-        <mat-card-content class="mat-card-content-form">
+        <mat-card-content class="mat-card-content-form">                
             <form class="form-add" [formGroup]="rodForm" (ngSubmit)="onSubmitRodForm()">
                 <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex>
                     <div fxLayout="column" fxFlex>
-                        <mat-form-field>
-                            <input formControlName="name" matInput placeholder="*{{'THING.FORM.NAME_PLACEHOLDER'|translate}}">
+                        <mat-form-field appearance="outline">
+                            <mat-label>*{{'THING.FORM.NAME_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="name" matInput placeholder="Shimano tx spod 13ft">
                             <mat-error *ngIf="rodForm.controls['name'].errors?.required && rodForm.controls['name'].touched">Name is <strong>required</strong></mat-error>
                         </mat-form-field>
                 
-                        <mat-form-field>
-                            <mat-select formControlName="fishingType" placeholder="{{'ROD.FORM.FISHINGTYPE_PLACEHOLDER'|translate}}">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'THING.FORM.FISHINGTYPE_PLACEHOLDER'|translate}}</mat-label>
+                            <mat-select formControlName="fishingType" >
                             <mat-option *ngFor="let type of fishingTypes | enumKeys" [value]="type.key">{{type.value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
-                                
-                        <mat-form-field>
-                            <input formControlName="imageUrl" matInput type="url" placeholder="http://...">
-                            <mat-label><fa-icon icon="link" class="btn-fa-icon_r"></fa-icon> <b> Image URL:</b></mat-label>
-                        </mat-form-field>
-                
+                        
                         <mat-form-field>
                             <input formControlName="weightG" matInput type="number" placeholder="{{'THING.FORM.WEIGHT_PLACEHOLDER'|translate}}">                        
                         </mat-form-field>
@@ -51,11 +48,15 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div fxFlex>
-                        <mat-form-field class="mat-thing-description">
-                            <textarea formControlName="description" matInput placeholder="{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}" rows="8"></textarea>
-                        </mat-form-field>
-                                
+                    <div  fxFlex>
+                        <div>
+                            <app-camera-field (changedImage)="onchangedImage($event)" [croppedImage]="rodForm.controls['imageUrl'].value!== null && rodForm.controls['imageUrl'].value.length > 0 ? rodForm.controls['imageUrl'].value : null"  [height]="225" [width]="300"></app-camera-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="mat-thing-description">
+                                <textarea formControlName="description" matInput placeholder="{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}" rows="8"></textarea>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
                 

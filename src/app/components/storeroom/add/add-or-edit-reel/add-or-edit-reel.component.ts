@@ -16,10 +16,10 @@ import { ThingType } from 'src/app/core/enums/thing-type';
   styleUrls: ['./add-or-edit-reel.component.scss']
 })
 export class AddOrEditReelComponent implements OnInit {
-
   id: any;
   userApp: UserApp;
   mainForm: FormGroup;
+  imageUrl: string;
 
   constructor(
     private userService: UserService,
@@ -79,7 +79,7 @@ export class AddOrEditReelComponent implements OnInit {
         userId: this.userApp.id,
         name: formModel.name as string,
         description: formModel.description as string,
-        imageUrl: formModel.imageUrl as string,
+        imageUrl: this.imageUrl != null ? this.imageUrl : formModel.imageUrl,
         price: formModel.price as number,
         weightG: formModel.weightG as number,
         type: ThingType.Reel
@@ -112,6 +112,9 @@ export class AddOrEditReelComponent implements OnInit {
         this.translate.instant('ERROR.FORM_NOT_VALIDATE'),
         this.translate.instant('ERROR.TITLE'));
     }
+  }
+  public onchangedImage(imageUrl: string) {
+    this.imageUrl = imageUrl;
   }
 
 }

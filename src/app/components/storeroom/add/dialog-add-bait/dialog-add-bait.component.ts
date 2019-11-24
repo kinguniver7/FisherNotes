@@ -12,6 +12,7 @@ export class DialogAddBaitComponent implements OnInit {
 
   VAL_BAIT = 'bait';
   VAL_WOBBLER = 'wobbler';
+  imageUrl: string;
 
   favoriteBait: string = this.VAL_BAIT;
   typesBait: SelectItem[] = [
@@ -30,6 +31,10 @@ export class DialogAddBaitComponent implements OnInit {
     } else if (this.favoriteBait === this.VAL_WOBBLER) {
       this.route.navigate(['/storeroom/add-wobbler']);
     } */
+  }
+
+  public onchangedImage(imageUrl: string) {
+    this.imageUrl = imageUrl;
   }
 
 }

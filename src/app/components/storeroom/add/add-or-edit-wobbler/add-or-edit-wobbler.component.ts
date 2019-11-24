@@ -18,10 +18,10 @@ import { FishingType } from 'src/app/core/interfaces/catching-type';
   styleUrls: ['./add-or-edit-wobbler.component.scss']
 })
 export class AddOrEditWobblerComponent implements OnInit {
-
   id: any;
   userApp: UserApp;
   mainForm: FormGroup;
+  imageUrl: string;
 
   wobblerFloatType = WobblerFloatType;
 
@@ -93,7 +93,7 @@ export class AddOrEditWobblerComponent implements OnInit {
         userId: this.userApp.id,
         name: formModel.name as string,
         description: formModel.description as string,
-        imageUrl: formModel.imageUrl as string,
+        imageUrl: this.imageUrl != null ? this.imageUrl : formModel.imageUrl,
         price: formModel.price as number,
         weightG: formModel.weightG as number,
         type: ThingType.Wobbler,
@@ -131,6 +131,10 @@ export class AddOrEditWobblerComponent implements OnInit {
         this.translate.instant('ERROR.FORM_NOT_VALIDATE'),
         this.translate.instant('ERROR.TITLE'));
     }
+  }
+
+  public onchangedImage(imageUrl: string) {
+    this.imageUrl = imageUrl;
   }
 
 }

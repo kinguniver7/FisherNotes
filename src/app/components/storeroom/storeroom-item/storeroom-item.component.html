@@ -1,14 +1,18 @@
-<mat-card>
-  <img mat-card-image src='{{thing.imageUrl !== null && thing.imageUrl || "assets/img/no_image.png"}}' alt="photo">
-  <mat-card-content>
-    <b>{{thing.name}}</b>          
-  </mat-card-content>
-  <mat-card-actions fxLayout="row" >
-    <button mat-icon-button  fxFlex="35" (click)="openDetailsDialog()"><fa-icon icon="eye"></fa-icon></button>
-    <button *ngIf="thing.type === type.Rod" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-rod', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
-    <button *ngIf="thing.type === type.Reel" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-reel', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
-    <button *ngIf="thing.type === type.Wobbler" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-wobbler', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
-    <button *ngIf="thing.type === type.Bait" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-bait', thing.id ]"><fa-icon icon="edit"></fa-icon></button>
-    <button mat-icon-button fxFlex="35" (click)="openRemoveItemDialog()"><fa-icon icon="trash"></fa-icon></button>            
-  </mat-card-actions>
+<mat-card class="text-center product-item">
+  <a href="javascript:void(0);" class="image-link" (click)="openDetailsDialog()">
+      <img mat-card-image src='{{thing.imageUrl !== null && thing.imageUrl || "assets/img/no_image.png"}}' alt="photo">
+      <span class="title title-fading text-truncate">{{thing.name}}</span>
+  </a>
+    
+   
+    <mat-divider></mat-divider>          
+ 
+  <div fxLayout="row" class="text-muted" >
+    <button mat-icon-button  fxFlex="35" (click)="openDetailsDialog()"><fa-icon icon="eye" class="fa-lg"></fa-icon></button>
+    <button *ngIf="thing.type === type.Rod" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-rod', thing.id ]"><fa-icon icon="edit" class="fa-lg"></fa-icon></button>
+    <button *ngIf="thing.type === type.Reel" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-reel', thing.id ]"><fa-icon icon="edit" class="fa-lg"></fa-icon></button>
+    <button *ngIf="thing.type === type.Wobbler" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-wobbler', thing.id ]"><fa-icon icon="edit" class="fa-lg"></fa-icon></button>
+    <button *ngIf="thing.type === type.Bait" mat-icon-button fxFlex="30" [routerLink]="[ '/storeroom/edit-bait', thing.id ]"><fa-icon icon="edit" class="fa-lg"></fa-icon></button>
+    <button mat-icon-button fxFlex="35" (click)="openRemoveItemDialog()"><fa-icon icon="trash" class="fa-lg"></fa-icon></button>            
+  </div>
 </mat-card>

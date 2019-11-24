@@ -1,0 +1,52 @@
+<div fxLayout="column" class="text-muted" fxLayoutAlign=" center">
+    <div *ngIf="statusCamera === 1 || statusCamera === 2">
+        <button mat-icon-button class="text-muted" type="button" (click)="onChangeStatus(0)"><fa-icon icon="times-circle" class="fa-2x"></fa-icon></button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign=" center">         
+        <webcam 
+            *ngIf="statusCamera === 1"
+            [height]="height" [width]="width" 
+            [trigger]="triggerObservable"
+            (imageCapture)="handleImage($event)" 
+            (initError)="handleInitError($event)">
+        </webcam>        
+    </div>
+    <div *ngIf="statusCamera === 2" >
+            <image-cropper style="width: 350px; height: 250px;"
+            *ngIf="imageBase64 !== null"
+            [imageBase64]="imageBase64"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 3" 
+            [cropperMinWidth] = "225"
+            [resizeToWidth] = "225"     
+            [onlyScaleDown]="true"
+            [roundCropper]="false"
+            format="png"
+            outputType="base64"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+            [style.display]="statusCamera === 2 ? null : 'none'"
+            [alignImage]="'left'">
+        </image-cropper>  
+        
+    </div>
+    <div *ngIf="statusCamera === 2" >
+        <button mat-raised-button (click)="onChangeStatus(0)" type="button">{{'GENERAL.SAVE' |translate}}</button>     
+    </div>
+    <div *ngIf="statusCamera === 0">
+        <img *ngIf="croppedImage===null" [width]="width" [height]="height" src='assets/img/no_image.png'>
+        <img *ngIf="croppedImage!==null" [src]='croppedImage'>
+    </div>
+    <div  fxLayout="row">
+        <button *ngIf="statusCamera === 1" mat-fab color="warn" (click)="triggerSnapshot()" type="button"><fa-icon icon="camera" class="fa-lg"></fa-icon></button>  
+        <button *ngIf="statusCamera === 0" mat-raised-button (click)="onChangeStatus(1)" type="button">{{'GENERAL.CHANGE' |translate}}</button>
+        <button *ngIf="statusCamera === 0 && imageBase64 !== null" mat-raised-button (click)="onChangeStatus(2)" type="button">{{'GENERAL.CROP' |translate}}</button>   
+    </div>
+    
+</div>
+
+
+
+

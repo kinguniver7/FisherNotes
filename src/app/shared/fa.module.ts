@@ -22,6 +22,7 @@ import {
   faTimes,
   faTimesCircle,
   faBoxOpen,
+  faCamera,
 
   fas
  } from '@fortawesome/free-solid-svg-icons';
@@ -59,6 +60,7 @@ export class FaModule {
     faEye,
     faTimes,
     faTimesCircle,
-    faBoxOpen);
+    faBoxOpen,
+    faCamera);
   }
 }

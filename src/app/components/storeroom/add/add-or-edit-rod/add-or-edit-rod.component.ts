@@ -10,6 +10,7 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from 'src/app/services/user.service';
 import { UserApp } from 'src/app/core/interfaces/user-app';
+import { Thing } from 'src/app/core/interfaces/fishing_tackle/thing';
 
 @Component({
   selector: 'app-add-or-edit-rod',
@@ -23,6 +24,7 @@ export class AddOrEditRodComponent implements OnInit {
   fishingTypes = FishingType;
   formationType = RodFormationType;
   rodForm: FormGroup;
+  imageUrl: string;
 
   constructor(
     private userService: UserService,
@@ -89,7 +91,7 @@ export class AddOrEditRodComponent implements OnInit {
         userId: this.userApp.id,
         name: formModel.name as string,
         description: formModel.description as string,
-        imageUrl: formModel.imageUrl as string,
+        imageUrl: this.imageUrl != null ? this.imageUrl : formModel.imageUrl,
         price: formModel.price as number,
         weightG: formModel.weightG as number,
         type: ThingType.Rod,
@@ -126,6 +128,10 @@ export class AddOrEditRodComponent implements OnInit {
         this.translate.instant('ERROR.FORM_NOT_VALIDATE'),
         this.translate.instant('ERROR.TITLE'));
     }
+  }
+
+  public onchangedImage(imageUrl: string) {
+    this.imageUrl = imageUrl;
   }
 
 }

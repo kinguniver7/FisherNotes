@@ -3,18 +3,14 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 
-import { AngularMaterialModule } from './shared/angular-material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from './shared/shared.module';
 
-// import ngx-translate and the http loader
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +24,6 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SpinFishingComponent } from './components/spin-fishing/spin-fishing.component';
 import { StoreroomComponent } from './components/storeroom/storeroom.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
-import { FaModule } from './shared/fa.module';
 import { StoreroomItemComponent } from './components/storeroom/storeroom-item/storeroom-item.component';
 
 import { RodDetailDialogComponent } from './components/storeroom/detail/rod-detail-dialog/rod-detail-dialog.component';
@@ -43,6 +38,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 import { DialogAddBaitComponent } from './components/storeroom/add/dialog-add-bait/dialog-add-bait.component';
 import { AddOrEditBaitComponent } from './components/storeroom/add/add-or-edit-bait/add-or-edit-bait.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -78,20 +74,9 @@ import { AddOrEditBaitComponent } from './components/storeroom/add/add-or-edit-b
 
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,
+    SharedModule,
     NgxSpinnerModule,
-    // ngx-translate and the loader module
-    HttpClientModule,
-    TranslateModule.forRoot({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-        }
-    }),
-    BrowserAnimationsModule,
-    AngularMaterialModule,
-    FlexLayoutModule,
-    FaModule
+    BrowserAnimationsModule
   ],
   entryComponents: [
     RodDetailDialogComponent,
@@ -100,13 +85,15 @@ import { AddOrEditBaitComponent } from './components/storeroom/add/add-or-edit-b
     ConfirmDialogComponent,
     DialogAddBaitComponent
   ],
-  providers: [AngularFireAuthGuard, LoaderService, { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],
+  providers: [
+    AngularFireAuthGuard,
+    { provide: StorageBucket, useValue: 'photos' },
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
 
-// required for AOT compilation
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
+

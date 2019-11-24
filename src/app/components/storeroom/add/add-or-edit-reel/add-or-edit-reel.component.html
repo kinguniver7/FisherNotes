@@ -27,10 +27,15 @@
                             <mat-label><b> $</b></mat-label>
                         </mat-form-field>
                     </div>
-                    <div fxFlex>
-                        <mat-form-field class="mat-thing-description">
-                            <textarea formControlName="description" matInput placeholder="{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}" rows="8"></textarea>
-                        </mat-form-field>                                    
+                    <div  fxFlex>
+                        <div>
+                            <app-camera-field (changedImage)="onchangedImage($event)" [croppedImage]="mainForm.controls['imageUrl'].value!== null && mainForm.controls['imageUrl'].value.length > 0 ? mainForm.controls['imageUrl'].value : null"  [height]="225" [width]="300"></app-camera-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="mat-thing-description">
+                                <textarea formControlName="description" matInput placeholder="{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}" rows="8"></textarea>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>                    
 
