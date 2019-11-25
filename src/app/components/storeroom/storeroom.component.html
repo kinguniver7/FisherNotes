@@ -49,7 +49,7 @@
                 <ngx-spinner [fullScreen]="false" name="spinnerRods" size="medium" type="ball-scale-multiple">
                         <p style="font-size: 20px; color: white">Loading...</p>
                 </ngx-spinner>
-                <app-storeroom-item *ngFor="let rod of rods" class="storeroom-items__item" [thing]="rod"></app-storeroom-item>
+                <app-storeroom-item *ngFor="let rod of rods" class="storeroom-items__item" [thing]="ConevrtThingToDetail(rod)"></app-storeroom-item>
             </div>            
         </div>
     </mat-card>
@@ -69,7 +69,7 @@
                 <ngx-spinner [fullScreen]="false" name="spinnerReels" size="medium" type="ball-scale-multiple">
                         <p style="font-size: 20px; color: white">Loading...</p>
                 </ngx-spinner>
-                <app-storeroom-item *ngFor="let reel of reels" class="storeroom-items__item" [thing]="reel"></app-storeroom-item>
+                <app-storeroom-item *ngFor="let reel of reels" class="storeroom-items__item" [thing]="ConevrtThingToDetail(reel)"></app-storeroom-item>
             </div>      
         </div>
     </mat-card>

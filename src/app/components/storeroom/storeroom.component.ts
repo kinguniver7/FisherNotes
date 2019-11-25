@@ -23,6 +23,7 @@ import { ThingType } from 'src/app/core/enums/thing-type';
 import { TranslateService } from '@ngx-translate/core';
 
 import {MatChipInputEvent} from '@angular/material/chips';
+import { ThingDetail } from 'src/app/core/models/thing-detail.model';
 
 
 @Component({
@@ -129,5 +130,33 @@ export class StoreroomComponent implements OnInit {
   // FILTERS EVENTS
   cleareGroup(): void {
     this.fltGroupsSelected = this.fltGroups[0].value;
+  }
+
+  ConevrtThingToDetail(item: any) {
+    // tslint:disable:max-line-length
+    const thingDetailModel = item as ThingDetail;
+    if (item.type === ThingType.Rod) {
+      thingDetailModel.specifications = [
+        {title: this.translate.instant('THING.FORM.FISHINGTYPE_PLACEHOLDER'), value: item.fishingType},
+        {title: this.translate.instant('THING.FORM.WEIGHT_PLACEHOLDER'), value: item.weightG},
+        {title: this.translate.instant('ROD.FORM.TESTOFBAIT_PLACEHOLDER'), value: item.testOfBaitG},
+        {title: this.translate.instant('ROD.FORM.TESTOFFISHINGLINE_PLACEHOLDER'), value: item.testOfFishingLineLb},
+        {title: this.translate.instant('ROD.FORM.SECTIONS_PLACEHOLDER'), value: item.sections},
+        {title: this.translate.instant('ROD.FORM.FORMATIONTYPE_PLACEHOLDER'), value: item.formationType}
+      ];
+      return thingDetailModel;
+    }
+    if (item.type === ThingType.Reel) {
+      thingDetailModel.specifications = [{title: this.translate.instant('THING.FORM.WEIGHT_PLACEHOLDER'), value: item.weightG}];
+      return thingDetailModel;
+    }
+    if (item.type === ThingType.Wobbler) {
+      return thingDetailModel;
+    }
+    if (item.type === ThingType.Bait) {
+      return thingDetailModel;
+    }
+    return thingDetailModel;
+
   }
 }

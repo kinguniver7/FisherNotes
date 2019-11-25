@@ -26,6 +26,7 @@ import { StoreroomComponent } from './components/storeroom/storeroom.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { StoreroomItemComponent } from './components/storeroom/storeroom-item/storeroom-item.component';
 
+import { ThingDetailDialogComponent } from './components/storeroom/detail/thing-detail-dialog.component';
 import { RodDetailDialogComponent } from './components/storeroom/detail/rod-detail-dialog/rod-detail-dialog.component';
 import { ReelDetailDialogComponent } from './components/storeroom/detail/reel-detail-dialog/reel-detail-dialog.component';
 import { WobblerDetailDialogComponent } from './components/storeroom/detail/wobbler-detail-dialog/wobbler-detail-dialog.component';
@@ -51,6 +52,7 @@ import { from } from 'rxjs';
     StoreroomComponent,
     StoreroomItemComponent,
 
+    ThingDetailDialogComponent,
     RodDetailDialogComponent,
     ReelDetailDialogComponent,
     WobblerDetailDialogComponent,
@@ -79,6 +81,7 @@ import { from } from 'rxjs';
     BrowserAnimationsModule
   ],
   entryComponents: [
+    ThingDetailDialogComponent,
     RodDetailDialogComponent,
     ReelDetailDialogComponent,
     WobblerDetailDialogComponent,

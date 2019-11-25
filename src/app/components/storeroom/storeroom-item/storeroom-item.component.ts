@@ -11,6 +11,8 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ReelService } from 'src/app/services/reel.service';
 import { WobblerService } from 'src/app/services/wobbler.service';
+import { ThingDetailDialogComponent } from '../detail/thing-detail-dialog.component';
+import { ThingDetail } from 'src/app/core/models/thing-detail.model';
 
 
 @Component({
@@ -20,7 +22,7 @@ import { WobblerService } from 'src/app/services/wobbler.service';
 })
 export class StoreroomItemComponent implements OnInit {
   @Input() thing: any = {};
-  dialogWidth: '640px';
+  dialogWidth: '340px';
   type = ThingType;
   constructor(public dialog: MatDialog,
               private rodService: RodService,
@@ -33,25 +35,23 @@ export class StoreroomItemComponent implements OnInit {
   }
 
   openDetailsDialog(): void {
+    const opt = {
+      width: this.dialogWidth,
+      data: this.thing,
+      maxHeight: '90vh'
+    }
+    this.dialog.open(ThingDetailDialogComponent, opt);
+    return;
     // TODO:REMOVE
     switch (this.thing.type) {
       case ThingType.Rod:
-          this.dialog.open(RodDetailDialogComponent, {
-            width: this.dialogWidth,
-            data: this.thing
-          });
+          this.dialog.open(RodDetailDialogComponent, opt);
           break;
       case ThingType.Reel:
-          this.dialog.open(ReelDetailDialogComponent, {
-            width: this.dialogWidth,
-            data: this.thing
-          });
+          this.dialog.open(ThingDetailDialogComponent, opt);
           break;
       case ThingType.Wobbler:
-          this.dialog.open(WobblerDetailDialogComponent, {
-            width: this.dialogWidth,
-            data: this.thing
-          });
+          this.dialog.open(WobblerDetailDialogComponent, opt);
           break;
       default:
         break;
