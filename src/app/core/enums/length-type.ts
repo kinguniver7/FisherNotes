@@ -1,5 +1,6 @@
 export enum LengthType {
-    mm,
-    m,
-    ft
+    mm = 1,
+    m = 2,
+    ft = 3,
+    Inch = 4
 }

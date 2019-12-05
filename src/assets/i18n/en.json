@@ -57,7 +57,9 @@
             "WEIGHT_PLACEHOLDER":"Weight(g)",
             "PRICE_PLACEHOLDER":"Price",
             "DESCRIPTION_PLACEHOLDER":"Description",
-            "FISHINGTYPE_PLACEHOLDER":"Fishing type"
+            "FISHINGTYPE_PLACEHOLDER":"Fishing type",
+            "LENGTH_PLACEHOLDER":"Length",
+            "LENGTHTYPE_PLACEHOLDER":"Length type"
         }        
     },
     "ROD":{
@@ -77,8 +79,7 @@
     "WOBBLER":{
         "TITLE":"Wobbler",
         "ADD_TITLE":"Add wobbler to storeroom",
-        "FORM":{
-            "LENGTH_PLACEHOLDER":"Length",
+        "FORM":{            
             "DIVES_FROM_PLACEHOLDER":"Dives from",
             "DIVES_TO_PLACEHOLDER":"Dives to",
             "FLOAT_TYPE_PLACEHOLDER":"Float type"
@@ -86,7 +87,13 @@
         }
     },
     "BAIT":{
-        "TITLE":"Bait"
+        "ADD_TITLE":"Add bait to storeroom",
+        "TITLE":"Bait",
+        "NAME_EXAMPLE":"CC Moore Pop-Up Acid Pear Drop 12мм",
+        "FORM":{
+            "LENGTH_PLACEHOLDER":"Length",
+            "LENGTHTYPE_PLACEHOLDER":"Length type"
+        }
     },
     "DASHBOARD": {
 

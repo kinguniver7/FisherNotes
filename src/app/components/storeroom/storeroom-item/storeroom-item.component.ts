@@ -42,21 +42,6 @@ export class StoreroomItemComponent implements OnInit {
     }
     this.dialog.open(ThingDetailDialogComponent, opt);
     return;
-    // TODO:REMOVE
-    switch (this.thing.type) {
-      case ThingType.Rod:
-          this.dialog.open(RodDetailDialogComponent, opt);
-          break;
-      case ThingType.Reel:
-          this.dialog.open(ThingDetailDialogComponent, opt);
-          break;
-      case ThingType.Wobbler:
-          this.dialog.open(WobblerDetailDialogComponent, opt);
-          break;
-      default:
-        break;
-    }
-
   }
 /**
  * Відкрити вікно для видалення речі.

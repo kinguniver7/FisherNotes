@@ -46,15 +46,29 @@
                             <mat-label>{{'ROD.FORM.SECTIONS_PLACEHOLDER'|translate}}</mat-label>
                             <input formControlName="sections" matInput type="number" placeholder="2">                        
                         </mat-form-field>
-                        
                         <mat-form-field appearance="outline">
                             <mat-label>{{'ROD.FORM.FORMATIONTYPE_PLACEHOLDER'|translate}}</mat-label>
                             <mat-select formControlName="formationType">
                                 <mat-option *ngFor="let type of formationType | enumKeys" [value]="type.key">{{type.value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
+                        
                     </div>
-                    <div  fxFlex>
+                    <div  fxFlex>                        
+
+                        <mat-form-field appearance="outline">
+                             <mat-label>{{'THING.FORM.LENGTH_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="length" matInput type="number" placeholder="0">                        
+                        </mat-form-field>  
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'THING.FORM.LENGTHTYPE_PLACEHOLDER'|translate}}</mat-label>
+                            <mat-select formControlName="lengthType">
+                                <mat-option *ngFor="let type of lengthTypes | enumKeys" [value]="type.key">{{type.value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+
                         <div>
                             <app-camera-field (changedImage)="onchangedImage($event)" [croppedImage]="rodForm.controls['imageUrl'].value!== null && rodForm.controls['imageUrl'].value.length > 0 ? rodForm.controls['imageUrl'].value : null"  [height]="225" [width]="300"></app-camera-field>
                         </div>

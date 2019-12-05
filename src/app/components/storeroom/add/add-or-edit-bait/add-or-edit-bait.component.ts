@@ -10,6 +10,7 @@ import { BaitService } from 'src/app/services/bait.service';
 import { Bait } from 'src/app/core/interfaces/fishing_tackle/bait';
 import { ThingType } from 'src/app/core/enums/thing-type';
 import { FishingType } from 'src/app/core/interfaces/catching-type';
+import { LengthType } from 'src/app/core/enums/length-type';
 
 @Component({
   selector: 'app-add-or-edit-bait',
@@ -23,6 +24,7 @@ export class AddOrEditBaitComponent implements OnInit {
   imageUrl: string;
 
   fishingTypes = FishingType;
+  lengthTypes = LengthType;
 
   constructor(
     private userService: UserService,
@@ -40,8 +42,8 @@ export class AddOrEditBaitComponent implements OnInit {
       this.id = activateRoute.snapshot.params.id;
       if (this.id) {
         this.spinner.show();
-        this.baitService.getById(this.id).subscribe(rod => {
-          this.createForm(rod);
+        this.baitService.getById(this.id).subscribe(thing => {
+          this.createForm(thing);
 
           this.spinner.hide();
         }, (error) => {
@@ -61,6 +63,8 @@ export class AddOrEditBaitComponent implements OnInit {
         imageUrl: [bait.imageUrl],
         price: [bait.price],
         weightG: [bait.weightG],
+        length: [bait.length],
+        lengthType: [bait.lengthType ? bait.lengthType.toString() : ''],
         fishingType: [bait.fishingType ? bait.fishingType.toString() : '']
       });
     } else {
@@ -70,6 +74,8 @@ export class AddOrEditBaitComponent implements OnInit {
         imageUrl: [''],
         price: [''],
         weightG: [''],
+        length: [''],
+        lengthType: [''],
         fishingType: ['']
       });
     }
@@ -87,6 +93,8 @@ export class AddOrEditBaitComponent implements OnInit {
         price: formModel.price as number,
         weightG: formModel.weightG as number,
         type: ThingType.Bait,
+        length: formModel.length,
+        lengthType: +formModel.lengthType,
         fishingType: +formModel.fishingType
       };
 

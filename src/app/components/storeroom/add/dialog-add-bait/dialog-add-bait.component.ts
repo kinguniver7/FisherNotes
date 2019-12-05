@@ -26,11 +26,6 @@ export class DialogAddBaitComponent implements OnInit {
 
   navigateToAddBait() {
     this.route.navigate(['/storeroom/add-' + this.VAL_BAIT]);
-    /* if (this.favoriteBait === this.VAL_BAIT) {
-      this.route.navigate(['/storeroom/add-bait']);
-    } else if (this.favoriteBait === this.VAL_WOBBLER) {
-      this.route.navigate(['/storeroom/add-wobbler']);
-    } */
   }
 
   public onchangedImage(imageUrl: string) {

@@ -1,6 +1,7 @@
 import { AppImage } from '../app-image';
 import { ThingType } from '../../enums/thing-type';
 import { FishingType } from '../catching-type';
+import { LengthType } from '../../enums/length-type';
 /**
  * Вещь
  */
@@ -21,6 +22,8 @@ export interface Thing {
     // Type of the thing (Wobbler, Rod)
     type: ThingType;
     // Type of fishing
-    fishingType?: FishingType;
+    fishingType?: FishingType;    
+    length?: number;
+    lengthType?: LengthType;
 }
 

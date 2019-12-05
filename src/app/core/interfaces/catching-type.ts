@@ -2,9 +2,9 @@
  * Вид рыбалки
  */
 export enum FishingType {
-    All,
-    Spinning,
-    Telescopic,
-    Carp,
-    Feeder
+    All = 0,
+    Spinning = 1,
+    Telescopic = 2,
+    Carp = 3,
+    Feeder = 4
 }

@@ -24,7 +24,7 @@ export class ThingDetailDialogComponent implements OnInit {
       return '/storeroom/edit-wobbler';
     }
     if (this.data.type === ThingType.Bait) {
-      return '/storeroom/edit-wobbler';
+      return '/storeroom/edit-bait';
     }
     return '';
   }

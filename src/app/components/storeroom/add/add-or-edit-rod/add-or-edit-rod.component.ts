@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { UserService } from 'src/app/services/user.service';
 import { UserApp } from 'src/app/core/interfaces/user-app';
 import { Thing } from 'src/app/core/interfaces/fishing_tackle/thing';
+import { LengthType } from 'src/app/core/enums/length-type';
 
 @Component({
   selector: 'app-add-or-edit-rod',
@@ -22,6 +23,7 @@ export class AddOrEditRodComponent implements OnInit {
   id: any;
   userApp: UserApp;
   fishingTypes = FishingType;
+  lengthTypes = LengthType;
   formationType = RodFormationType;
   rodForm: FormGroup;
   imageUrl: string;
@@ -51,19 +53,21 @@ export class AddOrEditRodComponent implements OnInit {
       }
     }
 
-  createForm(rod?: Rod) {
-    if (rod) {
+  createForm(thing?: Rod) {
+    if (thing) {
       this.rodForm = this.fb.group({
-        name: [rod.name, Validators.required],
-        description: [rod.description],
-        imageUrl: [rod.imageUrl],
-        price: [rod.price],
-        weightG: [rod.weightG],
-        sections: [rod.sections],
-        testOfBaitG: [rod.testOfBaitG],
-        testOfFishingLineLb: [rod.testOfFishingLineLb],
-        formationType: [rod.formationType ? rod.formationType.toString() : ''],
-        fishingType: [rod.fishingType ? rod.fishingType.toString() : '']
+        name: [thing.name, Validators.required],
+        description: [thing.description],
+        imageUrl: [thing.imageUrl],
+        price: [thing.price],
+        weightG: [thing.weightG],
+        sections: [thing.sections],
+        testOfBaitG: [thing.testOfBaitG],
+        testOfFishingLineLb: [thing.testOfFishingLineLb],
+        length: [thing.length],
+        lengthType: [thing.lengthType ? thing.lengthType.toString() : ''],
+        formationType: [thing.formationType ? thing.formationType.toString() : ''],
+        fishingType: [thing.fishingType ? thing.fishingType.toString() : '']
       });
     } else {
       this.rodForm = this.fb.group({
@@ -75,6 +79,8 @@ export class AddOrEditRodComponent implements OnInit {
         sections: [''],
         testOfBaitG: [''],
         testOfFishingLineLb: [''],
+        length: [''],
+        lengthType: [''],
         formationType: [''],
         fishingType: ['']
       });
@@ -98,6 +104,8 @@ export class AddOrEditRodComponent implements OnInit {
         sections: formModel.sections as number,
         testOfBaitG: formModel.testOfBaitG as number,
         testOfFishingLineLb: formModel.testOfFishingLineLb as number,
+        length: formModel.length,
+        lengthType: +formModel.lengthType,
         formationType: +formModel.formationType,
         fishingType: +formModel.fishingType
       };

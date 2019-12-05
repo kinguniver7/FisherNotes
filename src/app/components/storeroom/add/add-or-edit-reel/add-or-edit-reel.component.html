@@ -8,23 +8,25 @@
             <form class="form-add" [formGroup]="mainForm" (ngSubmit)="onSubmitForm()">
                 <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex>
                     <div fxLayout="column" fxFlex>
-                        <mat-form-field>
-                            <input formControlName="name" matInput placeholder="*{{'THING.FORM.NAME_PLACEHOLDER'|translate}}">
+                        <mat-form-field appearance="outline">
+                            <mat-label>*{{'THING.FORM.NAME_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="name" matInput placeholder="Shimano Stradic CI4+ 3000 ">
                             <mat-error *ngIf="mainForm.controls['name'].errors?.required && mainForm.controls['name'].touched">Name is <strong>required</strong></mat-error>
                         </mat-form-field>                                                            
-                                
-                        <mat-form-field>
-                            <input formControlName="imageUrl" matInput type="url" placeholder="http://...">
-                            <mat-label><fa-icon icon="link" class="btn-fa-icon_r"></fa-icon> <b> Image URL:</b></mat-label>
-                        </mat-form-field>
-        
-                        <mat-form-field>
-                            <input formControlName="weightG" matInput type="number" placeholder="{{'THING.FORM.WEIGHT_PLACEHOLDER'|translate}}">                        
+                                        
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'THING.FORM.WEIGHT_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="weightG" matInput type="number" placeholder="200">                        
                         </mat-form-field>     
         
-                        <mat-form-field>
-                            <input formControlName="price" matInput type="number" placeholder="{{'THING.FORM.PRICE_PLACEHOLDER'|translate}}">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'THING.FORM.PRICE_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="price" matInput type="number" placeholder="150">
                             <mat-label><b> $</b></mat-label>
+                        </mat-form-field>
+                        <mat-form-field  appearance="outline">
+                            <mat-label>{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}</mat-label>
+                            <textarea formControlName="description" matInput placeholder="Text" rows="8"></textarea>
                         </mat-form-field>
                     </div>
                     <div  fxFlex>
@@ -32,9 +34,7 @@
                             <app-camera-field (changedImage)="onchangedImage($event)" [croppedImage]="mainForm.controls['imageUrl'].value!== null && mainForm.controls['imageUrl'].value.length > 0 ? mainForm.controls['imageUrl'].value : null"  [height]="225" [width]="300"></app-camera-field>
                         </div>
                         <div>
-                            <mat-form-field class="mat-thing-description">
-                                <textarea formControlName="description" matInput placeholder="{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}" rows="8"></textarea>
-                            </mat-form-field>
+                            
                         </div>
                     </div>
                 </div>                    
