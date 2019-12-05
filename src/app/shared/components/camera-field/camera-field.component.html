@@ -40,9 +40,14 @@
         <img *ngIf="croppedImage!==null" [src]='croppedImage'>
     </div>
     <div  fxLayout="row">
+        <button *ngIf="statusCamera === 0" (click)="fileInput.click()" mat-raised-button type="button">
+            <fa-icon icon="file-image" class="fa-lg"></fa-icon>
+            {{'GENERAL.FILE' |translate}}
+            <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+        </button>   
         <button *ngIf="statusCamera === 1" mat-fab color="warn" (click)="triggerSnapshot()" type="button"><fa-icon icon="camera" class="fa-lg"></fa-icon></button>  
-        <button *ngIf="statusCamera === 0" mat-raised-button (click)="onChangeStatus(1)" type="button">{{'GENERAL.CHANGE' |translate}}</button>
-        <button *ngIf="statusCamera === 0 && imageBase64 !== null" mat-raised-button (click)="onChangeStatus(2)" type="button">{{'GENERAL.CROP' |translate}}</button>   
+        <button *ngIf="statusCamera === 0" mat-raised-button (click)="onChangeStatus(1)" type="button">{{'GENERAL.CAMERA' |translate}}</button>
+        <button *ngIf="statusCamera === 0 && imageBase64 !== null" mat-raised-button (click)="onChangeStatus(2)" type="button">{{'GENERAL.CROP' |translate}}</button>        
     </div>
     
 </div>

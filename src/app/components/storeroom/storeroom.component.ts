@@ -5,7 +5,7 @@ import { Thing } from 'src/app/core/interfaces/fishing_tackle/thing';
 import { FishingType } from 'src/app/core/interfaces/catching-type';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, zip, forkJoin } from 'rxjs';
-import { Rod } from 'src/app/core/interfaces/fishing_tackle/rod';
+import { Rod, RodFormationType } from 'src/app/core/interfaces/fishing_tackle/rod';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { RodService } from 'src/app/services/rod.service';
 import { UserService } from 'src/app/services/user.service';
@@ -137,12 +137,12 @@ export class StoreroomComponent implements OnInit {
     const thingDetailModel = item as ThingDetail;
     if (item.type === ThingType.Rod) {
       thingDetailModel.specifications = [
-        {title: this.translate.instant('THING.FORM.FISHINGTYPE_PLACEHOLDER'), value: item.fishingType},
+        {title: this.translate.instant('THING.FORM.FISHINGTYPE_PLACEHOLDER'), value: FishingType[item.fishingType]},
         {title: this.translate.instant('THING.FORM.WEIGHT_PLACEHOLDER'), value: item.weightG},
         {title: this.translate.instant('ROD.FORM.TESTOFBAIT_PLACEHOLDER'), value: item.testOfBaitG},
         {title: this.translate.instant('ROD.FORM.TESTOFFISHINGLINE_PLACEHOLDER'), value: item.testOfFishingLineLb},
         {title: this.translate.instant('ROD.FORM.SECTIONS_PLACEHOLDER'), value: item.sections},
-        {title: this.translate.instant('ROD.FORM.FORMATIONTYPE_PLACEHOLDER'), value: item.formationType}
+        {title: this.translate.instant('ROD.FORM.FORMATIONTYPE_PLACEHOLDER'), value: RodFormationType[item.formationType]}
       ];
       return thingDetailModel;
     }

@@ -68,6 +68,18 @@ export class CameraFieldComponent implements OnInit {
     }
   }
 
+  public onFileInput(event) {
+    const reader = new FileReader();
+    reader.readAsDataURL(event.currentTarget.files[0]);
+    reader.onload = () => {
+      this.imageBase64 = reader.result;
+      this.statusCamera = StatusCamera.CropImage;
+    };
+    reader.onerror = (error) => {
+      console.log('Error: ', error);
+    };
+  }
+
 }
 
 

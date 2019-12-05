@@ -14,7 +14,9 @@
         "CLOSE":"Close",
         "CONFIRM_DELETE":"Are you sure want to delete?",
         "SPECIFICATIONS":"Specifications",
-        "NOTES":"Notes"
+        "NOTES":"Notes",
+        "CAMERA":"Camera",
+        "FILE":"File"
     },
     "ERROR":{
         "TITLE":"Error",

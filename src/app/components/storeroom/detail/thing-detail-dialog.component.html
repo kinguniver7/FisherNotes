@@ -1,4 +1,10 @@
-<h2 mat-dialog-title>{{data.name}}</h2>
+<div fxLayout="row">
+    <h2  mat-dialog-title>{{data.name}}</h2>
+    <div fxFlex class="text-right">
+        <button mat-dialog-close mat-icon-button  class="text-muted" type="button"><fa-icon icon="times-circle" class="fa-lg"></fa-icon></button>
+    </div>    
+</div>
+
 <mat-dialog-content>
     <div fxLayout="column" class="detail__thing">
         <div fxLayoutAlign="center center">
@@ -33,6 +39,6 @@
     </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button mat-dialog-close color="primary">{{'GENERAL.OK'| translate}}</button>
+    <button mat-raised-button mat-dialog-close color="primary" cdkFocusInitial>{{'GENERAL.OK'| translate}}</button>
     <button mat-raised-button mat-dialog-close [routerLink]="[ editRoute, data.id ]"><fa-icon icon="edit"></fa-icon></button>    
 </mat-dialog-actions>

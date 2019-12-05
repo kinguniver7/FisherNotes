@@ -17,33 +17,39 @@
                         <mat-form-field appearance="outline">
                             <mat-label>{{'THING.FORM.FISHINGTYPE_PLACEHOLDER'|translate}}</mat-label>
                             <mat-select formControlName="fishingType" >
-                            <mat-option *ngFor="let type of fishingTypes | enumKeys" [value]="type.key">{{type.value}}</mat-option>
+                                <mat-option *ngFor="let type of fishingTypes | enumKeys" [value]="type.key">{{type.value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         
-                        <mat-form-field>
-                            <input formControlName="weightG" matInput type="number" placeholder="{{'THING.FORM.WEIGHT_PLACEHOLDER'|translate}}">                        
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'THING.FORM.WEIGHT_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="weightG" matInput type="number" placeholder="300">                        
                         </mat-form-field>
                 
-                        <mat-form-field>
-                            <input formControlName="testOfBaitG" matInput type="number" placeholder="{{'ROD.FORM.TESTOFBAIT_PLACEHOLDER'|translate}}">                        
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'ROD.FORM.TESTOFBAIT_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="testOfBaitG" matInput type="number" placeholder="120">                        
                         </mat-form-field>
             
-                        <mat-form-field>
-                            <input formControlName="testOfFishingLineLb" matInput type="number" placeholder="{{'ROD.FORM.TESTOFFISHINGLINE_PLACEHOLDER'|translate}}">                        
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'ROD.FORM.TESTOFFISHINGLINE_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="testOfFishingLineLb" matInput type="number" placeholder="3.5">                        
                         </mat-form-field>
         
-                        <mat-form-field>
-                            <input formControlName="price" matInput type="number" placeholder="{{'THING.FORM.PRICE_PLACEHOLDER'|translate}}">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'THING.FORM.PRICE_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="price" matInput type="number" placeholder="500">
                             <mat-label><b> $</b></mat-label>
                         </mat-form-field>                
                 
-                        <mat-form-field>
-                            <input formControlName="sections" matInput type="number" placeholder="{{'ROD.FORM.SECTIONS_PLACEHOLDER'|translate}}">                        
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'ROD.FORM.SECTIONS_PLACEHOLDER'|translate}}</mat-label>
+                            <input formControlName="sections" matInput type="number" placeholder="2">                        
                         </mat-form-field>
                         
-                        <mat-form-field>
-                            <mat-select formControlName="formationType" placeholder="{{'ROD.FORM.FORMATIONTYPE_PLACEHOLDER'|translate}}">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{'ROD.FORM.FORMATIONTYPE_PLACEHOLDER'|translate}}</mat-label>
+                            <mat-select formControlName="formationType">
                                 <mat-option *ngFor="let type of formationType | enumKeys" [value]="type.key">{{type.value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -53,8 +59,9 @@
                             <app-camera-field (changedImage)="onchangedImage($event)" [croppedImage]="rodForm.controls['imageUrl'].value!== null && rodForm.controls['imageUrl'].value.length > 0 ? rodForm.controls['imageUrl'].value : null"  [height]="225" [width]="300"></app-camera-field>
                         </div>
                         <div>
-                            <mat-form-field class="mat-thing-description">
-                                <textarea formControlName="description" matInput placeholder="{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}" rows="8"></textarea>
+                            <mat-form-field class="mat-thing-description" appearance="outline">
+                                <mat-label>{{'THING.FORM.DESCRIPTION_PLACEHOLDER'|translate}}</mat-label>
+                                <textarea formControlName="description" matInput placeholder="Text" rows="8"></textarea>
                             </mat-form-field>
                         </div>
                     </div>
