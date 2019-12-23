@@ -24,7 +24,7 @@ import { MatSidenav } from '@angular/material';
 })
 export class AppComponent implements OnInit{
   
-
+  //if user authenticated
   isAuthenticated: any = false;
   loading = false;
 
