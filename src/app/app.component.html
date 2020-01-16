@@ -6,7 +6,7 @@
       <mat-toolbar class="sidenav__toolbar" >
           <div fxLayout="row" class="sidenav-user-info" fxLayoutAlign="start center" >
               <div #avatar class='sidenav-user-info__image-avatar' ></div>
-              <div fxLayout="column">
+              <div fxLayout="column ">
                   <div #name class="sidenav-user-info__name"></div>
                   <div #email class="sidenav-user-info__email"></div>
               </div>              
@@ -51,7 +51,7 @@
         *ngIf="loading" color="accent" mode="indeterminate">
       </mat-progress-bar>
       <app-loader></app-loader>
-      <!-- Add Content Here -->
+      <!-- Add Content Here test -->
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
